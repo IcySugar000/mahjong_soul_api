@@ -16,7 +16,7 @@ class Lobby(MSRPCService):
         'signup': pb.ReqSignupAccount,
         'login': pb.ReqLogin,
         'prepareLogin': pb.ReqPrepareLogin,
-        'fastLogin': pb.ReqCommon,
+        'fastLogin': pb.ReqFastLogin,
         'fetchInfo': pb.ReqCommon,
         'loginSuccess': pb.ReqCommon,
         'fetchServerMaintenanceInfo': pb.ReqCommon,
@@ -400,6 +400,16 @@ class Lobby(MSRPCService):
         'simV2ActivitySetUpgrade': pb.ReqSimV2ActivitySetUpgrade,
         'progressRewardActivityReceive': pb.ReqProgressRewardActivityReceive,
         'fetchProgressRewardActivityInfo': pb.ReqFetchProgressRewardActivityInfo,
+        'questCrewActivityStartQuest': pb.ReqQuestCrewActivityStartQuest,
+        'questCrewActivityHire': pb.ReqQuestCrewActivityHire,
+        'questCrewActivityFeed': pb.ReqQuestCrewActivityFeed,
+        'questCrewActivityRefreshMarket': pb.ReqQuestCrewActivityRefreshMarket,
+        'bingoActivityReceiveReward': pb.ReqBingoActivityReceiveReward,
+        'fetchBingoActivityData': pb.ReqFetchBingoActivityData,
+        'snowballActivityStartBattle': pb.ReqSnowballActivityStartBattle,
+        'snowballActivityFinishBattle': pb.ReqSnowballActivityFinishBattle,
+        'snowballActivityUpgrade': pb.ReqSnowballActivityUpgrade,
+        'snowballActivityReceiveReward': pb.ReqSnowballActivityReceiveReward,
     }
     _res = {
         'fetchConnectionInfo': pb.ResConnectionInfo,
@@ -793,6 +803,16 @@ class Lobby(MSRPCService):
         'simV2ActivitySetUpgrade': pb.ResCommon,
         'progressRewardActivityReceive': pb.ResProgressRewardActivityReceive,
         'fetchProgressRewardActivityInfo': pb.ResFetchProgressRewardActivityInfo,
+        'questCrewActivityStartQuest': pb.ResQuestCrewActivityStartQuest,
+        'questCrewActivityHire': pb.ResQuestCrewActivityHire,
+        'questCrewActivityFeed': pb.ResQuestCrewActivityFeed,
+        'questCrewActivityRefreshMarket': pb.ResQuestCrewActivityRefreshMarket,
+        'bingoActivityReceiveReward': pb.ResBingoActivityReceiveReward,
+        'fetchBingoActivityData': pb.ResFetchBingoActivityData,
+        'snowballActivityStartBattle': pb.ResSnowballActivityStartBattle,
+        'snowballActivityFinishBattle': pb.ResSnowballActivityFinishBattle,
+        'snowballActivityUpgrade': pb.ResSnowballActivityUpgrade,
+        'snowballActivityReceiveReward': pb.ResSnowballActivityReceiveReward,
     }
 
     def get_package_name(self):
@@ -1979,6 +1999,36 @@ class Lobby(MSRPCService):
 
     async def fetch_progress_reward_activity_info(self, req):
         return await self.call_method('fetchProgressRewardActivityInfo', req)
+
+    async def quest_crew_activity_start_quest(self, req):
+        return await self.call_method('questCrewActivityStartQuest', req)
+
+    async def quest_crew_activity_hire(self, req):
+        return await self.call_method('questCrewActivityHire', req)
+
+    async def quest_crew_activity_feed(self, req):
+        return await self.call_method('questCrewActivityFeed', req)
+
+    async def quest_crew_activity_refresh_market(self, req):
+        return await self.call_method('questCrewActivityRefreshMarket', req)
+
+    async def bingo_activity_receive_reward(self, req):
+        return await self.call_method('bingoActivityReceiveReward', req)
+
+    async def fetch_bingo_activity_data(self, req):
+        return await self.call_method('fetchBingoActivityData', req)
+
+    async def snowball_activity_start_battle(self, req):
+        return await self.call_method('snowballActivityStartBattle', req)
+
+    async def snowball_activity_finish_battle(self, req):
+        return await self.call_method('snowballActivityFinishBattle', req)
+
+    async def snowball_activity_upgrade(self, req):
+        return await self.call_method('snowballActivityUpgrade', req)
+
+    async def snowball_activity_receive_reward(self, req):
+        return await self.call_method('snowballActivityReceiveReward', req)
 
 
 class FastTest(MSRPCService):

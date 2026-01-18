@@ -330,11 +330,32 @@ message NotifyConnectionShutdown {
   uint32 close_at = 2;
 }
 
+message NotifyCustomizedContestReady {
+  uint32 unique_id = 1;
+  uint32 ready = 2;
+  uint32 reason = 3;
+}
+
+message NotifyCustomizedContestRuleModify {
+  uint32 unique_id = 1;
+  uint32 auto_match = 2;
+}
+
+message NotifyCustomizedContestPlanReady {
+  CustomizedContestGamePlan game_plan = 1;
+}
+
+message NotifyCustomizedContestPlanCancel {
+  uint32 unique_id = 1;
+  string uuid = 2;
+}
+
 message Error {
   uint32 code = 1;
   repeated uint32 u32_params = 2;
   repeated string str_params = 3;
   string json_param = 4;
+  uint32 level = 5;
 }
 
 message Wrapper {
@@ -353,6 +374,26 @@ message ReqCommon {
 
 message ResCommon {
   Error error = 1;
+}
+
+message StringDirty {
+  bool dirty = 1;
+  string value = 2;
+}
+
+message StringArrayDirty {
+  bool dirty = 1;
+  repeated string value = 2;
+}
+
+message UInt32ArrayDirty {
+  bool dirty = 1;
+  repeated uint32 value = 2;
+}
+
+message UInt32Dirty {
+  bool dirty = 1;
+  uint32 value = 2;
 }
 
 message ResAccountUpdate {
@@ -764,6 +805,7 @@ message GameDetailRule {
   uint32 hunzhiyiji_mode = 71;
   uint32 wanxiangxiuluo_mode = 72;
   uint32 beishuizhizhan_mode = 73;
+  repeated uint32 amusement_switches = 74;
 }
 
 message Room {
@@ -1132,7 +1174,10 @@ message AccountActivityUpdate {
   repeated lq.ActivityStoryData story_data = 14;
   repeated lq.ActivityChooseUpData choose_up_data = 15;
   repeated lq.SimulationV2Data simulation_v2_data = 16;
-  repeated lq.ActivityShootData shoot_data = 17;
+  repeated lq.ActivityQuestCrewChanges quest_crew_data = 17;
+  repeated lq.ActivityShootData shoot_data = 18;
+  repeated lq.ActivityBingoData bingo_data = 19;
+  repeated lq.ActivitySnowballValueChanges snowball_data = 20;
 }
 
 message ActivityCombiningWorkbench {
@@ -1337,6 +1382,62 @@ message ActivityStoryData {
 message ActivityProgressRewardData {
   uint32 activity_id = 1;
   repeated uint32 rewarded_progresses = 2;
+}
+
+message QCMember {
+  uint32 member_id = 1;
+  TimeCounterData consumed_sta = 2;
+}
+
+message ActivityQuestCrewEffectResult {
+  QCQuestResultChange result_change = 1;
+  repeated QCQuestConsumeChange consumed_change = 2;
+  QCItemReward reward = 3;
+  message QCQuestResultChange {
+    uint32 from = 1;
+    uint32 to = 2;
+  }
+
+  message QCQuestConsumeChange {
+    uint32 member_id = 1;
+    uint32 from = 2;
+    uint32 to = 3;
+  }
+
+  message QCItemReward {
+    repeated ExecuteReward execute_reward = 1;
+  }
+
+}
+
+message QCQuest {
+  uint32 quest_id = 1;
+  uint32 finished = 2;
+  uint32 finished_time = 3;
+}
+
+message ActivityQuestCrewData {
+  uint32 activity_id = 1;
+  repeated QCMember members = 2;
+  repeated QCQuest quest_board = 3;
+  repeated uint32 market_board = 4;
+}
+
+message ActivityQuestCrewChanges {
+  uint32 activity_id = 1;
+  QCMemberArrayDirty members = 2;
+  QCQuestArrayDirty quest_board = 3;
+  UInt32ArrayDirty market_board = 4;
+  message QCMemberArrayDirty {
+    bool dirty = 1;
+    repeated QCMember value = 2;
+  }
+
+  message QCQuestArrayDirty {
+    bool dirty = 1;
+    repeated QCQuest value = 2;
+  }
+
 }
 
 message ActivityChooseUpData {
@@ -1739,6 +1840,18 @@ message CustomizedContestDetail {
   uint32 auto_match = 20;
   uint32 rank_type = 21;
   bool show_team_rank = 22;
+  uint32 tied_rank = 23;
+  uint32 match_start_time = 24;
+  uint32 match_end_time = 25;
+}
+
+message CustomizedContestGamePlan {
+  uint32 unique_id = 1;
+  string uuid = 2;
+  repeated uint32 ready_players = 3;
+  repeated uint32 account_ids = 4;
+  uint32 game_start_time = 5;
+  uint32 expired_time = 6;
 }
 
 message CustomizedContestPlayerReport {
@@ -2652,12 +2765,124 @@ message ActivityShootData {
   uint32 level = 2;
   repeated ActivityShootEnemyInfo enemies = 3;
   repeated uint32 rewarded_ids = 4;
+  bool ended = 5;
+  repeated ActivityShootRewardRecord rewarded_records = 6;
 }
 
 message ActivityShootEnemyInfo {
   uint32 group_id = 1;
   uint32 enemy_id = 2;
   uint32 hp = 3;
+}
+
+message ActivityShootRewardRecord {
+  uint32 enemy_id = 1;
+  uint32 reward_id = 2;
+  uint32 rewarded_time = 3;
+}
+
+message ActivityBingoCardData {
+  uint32 card_id = 1;
+  repeated uint32 achieved_pos = 2;
+  repeated uint32 rewarded_ids = 3;
+  uint32 state = 4;
+  repeated BingoAchievedRecord achieved_records = 5;
+  repeated BingoRewardRecord reward_records = 6;
+  message BingoAchievedRecord {
+    uint32 pos = 1;
+    uint32 time = 2;
+  }
+
+  message BingoRewardRecord {
+    uint32 id = 1;
+    uint32 time = 2;
+  }
+
+}
+
+message ActivityBingoData {
+  uint32 activity_id = 1;
+  repeated ActivityBingoCardData cards = 2;
+}
+
+message ActivityIdTimeRecord {
+  uint32 id = 1;
+  uint32 time = 2;
+}
+
+message ActivitySnowballData {
+  uint32 activity_id = 1;
+  uint32 level = 2;
+  repeated ActivitySnowballUpgrade upgrade = 3;
+  repeated uint32 rewarded_level = 4;
+  repeated uint32 finished_level = 5;
+  uint32 random_seed = 6;
+  string battle_id = 7;
+  uint32 level_finished_count = 8;
+  uint32 player_combo = 9;
+  repeated ActivityIdTimeRecord reward_records = 10;
+  repeated ActivityIdTimeRecord finish_records = 11;
+}
+
+message ActivitySnowballUpgrade {
+  uint32 id = 1;
+}
+
+message ActivitySnowballUpgradeDirty {
+  repeated ActivitySnowballUpgrade value = 1;
+  bool dirty = 2;
+}
+
+message ActivitySnowballValueChanges {
+  UInt32Dirty level = 1;
+  ActivitySnowballUpgradeDirty upgrade = 2;
+  UInt32ArrayDirty rewarded_level = 3;
+  UInt32ArrayDirty finished_level = 4;
+  UInt32Dirty level_finished_count = 5;
+  UInt32Dirty player_combo = 6;
+}
+
+message ActivitySnowballPlayerAttackedInfo {
+  uint32 target = 1;
+  uint32 track = 2;
+  uint32 damage = 3;
+  uint32 critia = 4;
+}
+
+message ActivitySnowballPlayerAction {
+  uint32 tick = 1;
+  uint32 track = 2;
+}
+
+message ActivitySnowballPlayerState {
+  uint32 player = 1;
+  uint32 hp = 2;
+  uint32 mp = 3;
+}
+
+message SnowballActivityBossAction {
+  uint32 tick = 1;
+  uint32 type = 2;
+  uint32 track = 3;
+  SnowballActivityBossAttackInfo attack_info = 4;
+  SnowballActivityBossMPConsumeInfo mp_consume_info = 5;
+  message SnowballActivityBossAttackInfo {
+    uint32 damage = 1;
+    uint32 is_con_attack = 2;
+  }
+
+  message SnowballActivityBossMPConsumeInfo {
+    uint32 mp_consume = 1;
+    uint32 before_delay = 2;
+    uint32 after_delay = 3;
+  }
+
+}
+
+message ClientDeviceInfoLog {
+  lq.ClientDeviceInfo device_info = 1;
+  uint32 login_time = 2;
+  uint32 account_id = 3;
 }
 
 service Lobby {
@@ -2668,7 +2893,7 @@ service Lobby {
   rpc signup (ReqSignupAccount) returns (ResSignupAccount);
   rpc login (ReqLogin) returns (ResLogin);
   rpc prepareLogin (ReqPrepareLogin) returns (ResCommon);
-  rpc fastLogin (ReqCommon) returns (ResFastLogin);
+  rpc fastLogin (ReqFastLogin) returns (ResFastLogin);
   rpc fetchInfo (ReqCommon) returns (ResFetchInfo);
   rpc loginSuccess (ReqCommon) returns (ResCommon);
   rpc fetchServerMaintenanceInfo (ReqCommon) returns (ResFetchServerMaintenanceInfo);
@@ -3052,6 +3277,16 @@ service Lobby {
   rpc simV2ActivitySetUpgrade (ReqSimV2ActivitySetUpgrade) returns (ResCommon);
   rpc progressRewardActivityReceive (ReqProgressRewardActivityReceive) returns (ResProgressRewardActivityReceive);
   rpc fetchProgressRewardActivityInfo (ReqFetchProgressRewardActivityInfo) returns (ResFetchProgressRewardActivityInfo);
+  rpc questCrewActivityStartQuest (ReqQuestCrewActivityStartQuest) returns (ResQuestCrewActivityStartQuest);
+  rpc questCrewActivityHire (ReqQuestCrewActivityHire) returns (ResQuestCrewActivityHire);
+  rpc questCrewActivityFeed (ReqQuestCrewActivityFeed) returns (ResQuestCrewActivityFeed);
+  rpc questCrewActivityRefreshMarket (ReqQuestCrewActivityRefreshMarket) returns (ResQuestCrewActivityRefreshMarket);
+  rpc bingoActivityReceiveReward (ReqBingoActivityReceiveReward) returns (ResBingoActivityReceiveReward);
+  rpc fetchBingoActivityData (ReqFetchBingoActivityData) returns (ResFetchBingoActivityData);
+  rpc snowballActivityStartBattle (ReqSnowballActivityStartBattle) returns (ResSnowballActivityStartBattle);
+  rpc snowballActivityFinishBattle (ReqSnowballActivityFinishBattle) returns (ResSnowballActivityFinishBattle);
+  rpc snowballActivityUpgrade (ReqSnowballActivityUpgrade) returns (ResSnowballActivityUpgrade);
+  rpc snowballActivityReceiveReward (ReqSnowballActivityReceiveReward) returns (ResSnowballActivityReceiveReward);
 }
 
 message ResConnectionInfo {
@@ -3116,6 +3351,10 @@ message ResLogin {
 message ReqPrepareLogin {
   string access_token = 1;
   uint32 type = 2;
+}
+
+message ReqFastLogin {
+  string client_version_string = 1;
 }
 
 message ResFastLogin {
@@ -4809,6 +5048,7 @@ message ResEnterCustomizedContest {
   bool is_followed = 4;
   uint32 state = 5;
   bool is_admin = 6;
+  CustomizedContestGamePlan game_plan = 7;
 }
 
 message ReqFetchCustomizedContestOnlineInfo {
@@ -4924,7 +5164,10 @@ message ResAccountActivityData {
   repeated lq.ActivityStoryData story_data = 29;
   repeated lq.ActivityChooseUpData choose_up_data = 30;
   repeated lq.ActivityProgressRewardData progress_reward_data = 32;
-  repeated lq.ActivityShootData shoot_data = 33;
+  repeated lq.ActivityQuestCrewData quest_crew_data = 33;
+  repeated lq.ActivityShootData shoot_data = 34;
+  repeated lq.ActivityBingoData bingo_data = 35;
+  repeated lq.ActivitySnowballData snowball_data = 36;
   message ActivitySignInData {
     uint32 activity_id = 1;
     uint32 sign_in_count = 2;
@@ -5794,8 +6037,14 @@ message ResFetchSeerInfo {
 
 message ResFetchServerMaintenanceInfo {
   repeated ServerFunctionMaintenanceInfo function_maintenance = 1;
+  repeated ServerActivityMaintenanceInfo activity_maintenance = 2;
   message ServerFunctionMaintenanceInfo {
     string name = 1;
+    bool open = 2;
+  }
+
+  message ServerActivityMaintenanceInfo {
+    string activity_type = 1;
     bool open = 2;
   }
 
@@ -5975,6 +6224,7 @@ message ContestSetting {
   message LevelLimit {
     uint32 type = 1;
     uint32 value = 2;
+    uint32 operate = 3;
   }
 
 }
@@ -6022,6 +6272,15 @@ message ResFetchManagerCustomizedContest {
   string checking_name = 10;
   ContestSetting contest_setting = 11;
   uint32 rank_type = 12;
+  SeasonInfo season = 13;
+  uint32 match_start_time = 14;
+  uint32 match_end_time = 15;
+  message SeasonInfo {
+    uint32 create_time = 1;
+    uint32 start_time = 2;
+    uint32 end_time = 3;
+  }
+
 }
 
 message ReqUpdateManagerCustomizedContest {
@@ -6069,12 +6328,14 @@ message ResFetchContestPlayerRank {
     string nickname = 2;
     ContestPlayerAccountData data = 3;
     string team_name = 4;
+    int32 modify_score = 5;
   }
 
   message PlayerData {
     uint32 rank = 1;
     ContestPlayerAccountData data = 2;
     string team_name = 3;
+    int32 modify_score = 4;
   }
 
 }
@@ -6644,6 +6905,128 @@ message ResShootActivityAttackEnemies {
 
 }
 
+message ReqQuestCrewActivityStartQuest {
+  uint32 activity_id = 1;
+  repeated uint32 joined_members = 2;
+  uint32 quest_id = 3;
+}
+
+message ResQuestCrewActivityStartQuest {
+  Error error = 1;
+  uint32 result = 2;
+  ActivityQuestCrewChanges value_changes = 3;
+  repeated ActivityQuestCrewEffectInfo effect_info = 4;
+  message ActivityQuestCrewEffectInfo {
+    uint32 member_id = 1;
+    uint32 effect_id = 2;
+    ActivityQuestCrewEffectResult result = 3;
+  }
+
+}
+
+message ReqQuestCrewActivityHire {
+  uint32 activity_id = 1;
+  uint32 member_id = 2;
+}
+
+message ResQuestCrewActivityHire {
+  Error error = 1;
+  ActivityQuestCrewChanges value_changes = 2;
+  repeated ExecuteResult execute_result = 3;
+}
+
+message ReqQuestCrewActivityFeed {
+  uint32 activity_id = 1;
+  repeated uint32 member_id = 2;
+}
+
+message ResQuestCrewActivityFeed {
+  Error error = 1;
+  ActivityQuestCrewChanges value_changes = 2;
+  repeated ExecuteResult execute_result = 3;
+}
+
+message ReqQuestCrewActivityRefreshMarket {
+  uint32 activity_id = 1;
+}
+
+message ResQuestCrewActivityRefreshMarket {
+  Error error = 1;
+  ActivityQuestCrewChanges value_changes = 2;
+  repeated ExecuteResult execute_result = 3;
+}
+
+message ReqBingoActivityReceiveReward {
+  uint32 activity_id = 1;
+  repeated BingoReward rewards = 2;
+  message BingoReward {
+    uint32 reward_id = 1;
+    uint32 card_id = 2;
+  }
+
+}
+
+message ResBingoActivityReceiveReward {
+  Error error = 1;
+  repeated ExecuteResult execute_result = 2;
+  repeated ActivityBingoCardData cards = 3;
+}
+
+message ReqFetchBingoActivityData {
+  uint32 activity_id = 1;
+}
+
+message ResFetchBingoActivityData {
+  Error error = 1;
+  ActivityBingoData data = 2;
+}
+
+message ReqSnowballActivityStartBattle {
+  uint32 activity_id = 1;
+}
+
+message ResSnowballActivityStartBattle {
+  Error error = 1;
+  uint32 random_seed = 2;
+  repeated SnowballActivityBossAction boss_action = 3;
+  string battle_id = 4;
+  repeated ActivitySnowballPlayerState player_state = 5;
+  repeated uint32 random_seq = 6;
+}
+
+message ReqSnowballActivityFinishBattle {
+  uint32 activity_id = 1;
+  repeated ActivitySnowballPlayerAction player_action = 2;
+  uint32 result = 3;
+  string battle_id = 4;
+}
+
+message ResSnowballActivityFinishBattle {
+  Error error = 1;
+  ActivitySnowballValueChanges changes = 2;
+}
+
+message ReqSnowballActivityUpgrade {
+  uint32 activity_id = 1;
+  repeated ActivitySnowballUpgrade upgrade = 2;
+}
+
+message ResSnowballActivityUpgrade {
+  Error error = 1;
+  ActivitySnowballValueChanges changes = 2;
+}
+
+message ReqSnowballActivityReceiveReward {
+  uint32 activity_id = 1;
+  repeated uint32 level = 2;
+}
+
+message ResSnowballActivityReceiveReward {
+  Error error = 1;
+  ActivitySnowballValueChanges changes = 2;
+  repeated ExecuteReward rewards = 3;
+}
+
 message AmuletBadgeData {
   uint32 id = 1;
   uint32 uid = 2;
@@ -6998,29 +7381,9 @@ message AmuletTileArrayDirty {
   repeated AmuletTile value = 2;
 }
 
-message StringDirty {
-  bool dirty = 1;
-  string value = 2;
-}
-
-message StringArrayDirty {
-  bool dirty = 1;
-  repeated string value = 2;
-}
-
-message UInt32ArrayDirty {
-  bool dirty = 1;
-  repeated uint32 value = 2;
-}
-
 message AmuletMingInfoArrayDirty {
   bool dirty = 1;
   repeated AmuletMingInfo value = 2;
-}
-
-message UInt32Dirty {
-  bool dirty = 1;
-  uint32 value = 2;
 }
 
 message AmuletGameOperationArrayDirty {
@@ -7230,9 +7593,7 @@ message ReqAuthGame {
   uint32 account_id = 1;
   string token = 2;
   string game_uuid = 3;
-  string session = 4;
-  string gift = 5;
-  uint32 vs = 6;
+  ClientDeviceInfo device = 7;
 }
 
 message ResAuthGame {
@@ -7473,6 +7834,10 @@ message YongchangInfo {
   uint32 shouqie_bonus = 5;
 }
 
+message XiaKeShangInfo {
+  repeated uint32 score_coefficients = 1;
+}
+
 message ActionNewCard {
   uint32 field_spell = 1;
 }
@@ -7503,6 +7868,7 @@ message ActionNewRound {
   string sha256 = 19;
   YongchangInfo yongchang = 20;
   string saltSha256 = 21;
+  XiaKeShangInfo xia_ke_shang = 26;
 }
 
 message RecordNewRound {
@@ -7531,6 +7897,7 @@ message RecordNewRound {
   YongchangInfo yongchang = 23;
   string saltSha256 = 24;
   string salt = 25;
+  XiaKeShangInfo xia_ke_shang = 26;
   message TingPai {
     uint32 seat = 1;
     repeated TingPaiInfo tingpais1 = 2;
@@ -7646,6 +8013,7 @@ message LiQiSuccess {
   uint32 liqibang = 3;
   bool failed = 4;
   uint32 liqi_type_beishuizhizhan = 5;
+  XiaKeShangInfo xia_ke_shang = 6;
 }
 
 message FanInfo {
@@ -7681,6 +8049,7 @@ message HuleInfo {
   uint32 tianming_bonus = 24;
   repeated string baida_changed = 25;
   string hu_tile_baiDa_changed = 26;
+  uint32 xia_ke_shang_coefficient = 27;
 }
 
 message TingPaiInfo {
