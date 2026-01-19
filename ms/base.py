@@ -1,3 +1,4 @@
+import logging
 import asyncio
 import websockets
 from typing import Coroutine, Callable
@@ -53,10 +54,12 @@ class MSRPCChannel:
             type_byte = msg[0]
             if type_byte == 1:  # NOTIFY
                 wrapper = self.unwrap(msg[1:])
+                logging.info(f"Got Notify: {wrapper.name}")
                 for hook in self._hooks.get(wrapper.name, []):
                     asyncio.create_task(hook(wrapper.data))
             elif type_byte == 2:  # REQUEST
                 wrapper = self.unwrap(msg[3:])
+                logging.info(f"Got Request: {wrapper.name}")
                 for hook in self._hooks.get(wrapper.name, []):
                     asyncio.create_task(hook(wrapper.data))
             elif type_byte == 3:  # RESPONSE
