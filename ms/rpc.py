@@ -827,1207 +827,1207 @@ class Lobby(MSRPCService):
     def get_res_class(self, method):
         return Lobby._res[method]
 
-    async def fetch_connection_info(self, req):
+    async def fetch_connection_info(self, req: pb.ReqCommon) -> pb.ResConnectionInfo:
         return await self.call_method('fetchConnectionInfo', req)
 
-    async def fetch_queue_info(self, req):
+    async def fetch_queue_info(self, req: pb.ReqCommon) -> pb.ResFetchQueueInfo:
         return await self.call_method('fetchQueueInfo', req)
 
-    async def cancel_queue(self, req):
+    async def cancel_queue(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('cancelQueue', req)
 
-    async def openid_check(self, req):
+    async def openid_check(self, req: pb.ReqOpenidCheck) -> pb.ResOauth2Check:
         return await self.call_method('openidCheck', req)
 
-    async def signup(self, req):
+    async def signup(self, req: pb.ReqSignupAccount) -> pb.ResSignupAccount:
         return await self.call_method('signup', req)
 
-    async def login(self, req):
+    async def login(self, req: pb.ReqLogin) -> pb.ResLogin:
         return await self.call_method('login', req)
 
-    async def prepare_login(self, req):
+    async def prepare_login(self, req: pb.ReqPrepareLogin) -> pb.ResCommon:
         return await self.call_method('prepareLogin', req)
 
-    async def fast_login(self, req):
+    async def fast_login(self, req: pb.ReqFastLogin) -> pb.ResFastLogin:
         return await self.call_method('fastLogin', req)
 
-    async def fetch_info(self, req):
+    async def fetch_info(self, req: pb.ReqCommon) -> pb.ResFetchInfo:
         return await self.call_method('fetchInfo', req)
 
-    async def login_success(self, req):
+    async def login_success(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('loginSuccess', req)
 
-    async def fetch_server_maintenance_info(self, req):
+    async def fetch_server_maintenance_info(self, req: pb.ReqCommon) -> pb.ResFetchServerMaintenanceInfo:
         return await self.call_method('fetchServerMaintenanceInfo', req)
 
-    async def email_login(self, req):
+    async def email_login(self, req: pb.ReqEmailLogin) -> pb.ResLogin:
         return await self.call_method('emailLogin', req)
 
-    async def oauth2_auth(self, req):
+    async def oauth2_auth(self, req: pb.ReqOauth2Auth) -> pb.ResOauth2Auth:
         return await self.call_method('oauth2Auth', req)
 
-    async def oauth2_check(self, req):
+    async def oauth2_check(self, req: pb.ReqOauth2Check) -> pb.ResOauth2Check:
         return await self.call_method('oauth2Check', req)
 
-    async def oauth2_signup(self, req):
+    async def oauth2_signup(self, req: pb.ReqOauth2Signup) -> pb.ResOauth2Signup:
         return await self.call_method('oauth2Signup', req)
 
-    async def oauth2_login(self, req):
+    async def oauth2_login(self, req: pb.ReqOauth2Login) -> pb.ResLogin:
         return await self.call_method('oauth2Login', req)
 
-    async def dmm_pre_login(self, req):
+    async def dmm_pre_login(self, req: pb.ReqDMMPreLogin) -> pb.ResDMMPreLogin:
         return await self.call_method('dmmPreLogin', req)
 
-    async def create_phone_verify_code(self, req):
+    async def create_phone_verify_code(self, req: pb.ReqCreatePhoneVerifyCode) -> pb.ResCommon:
         return await self.call_method('createPhoneVerifyCode', req)
 
-    async def create_email_verify_code(self, req):
+    async def create_email_verify_code(self, req: pb.ReqCreateEmailVerifyCode) -> pb.ResCommon:
         return await self.call_method('createEmailVerifyCode', req)
 
-    async def verfify_code_for_secure(self, req):
+    async def verfify_code_for_secure(self, req: pb.ReqVerifyCodeForSecure) -> pb.ResVerfiyCodeForSecure:
         return await self.call_method('verfifyCodeForSecure', req)
 
-    async def bind_phone_number(self, req):
+    async def bind_phone_number(self, req: pb.ReqBindPhoneNumber) -> pb.ResCommon:
         return await self.call_method('bindPhoneNumber', req)
 
-    async def unbind_phone_number(self, req):
+    async def unbind_phone_number(self, req: pb.ReqUnbindPhoneNumber) -> pb.ResCommon:
         return await self.call_method('unbindPhoneNumber', req)
 
-    async def fetch_phone_login_bind(self, req):
+    async def fetch_phone_login_bind(self, req: pb.ReqCommon) -> pb.ResFetchPhoneLoginBind:
         return await self.call_method('fetchPhoneLoginBind', req)
 
-    async def create_phone_login_bind(self, req):
+    async def create_phone_login_bind(self, req: pb.ReqCreatePhoneLoginBind) -> pb.ResCommon:
         return await self.call_method('createPhoneLoginBind', req)
 
-    async def bind_email(self, req):
+    async def bind_email(self, req: pb.ReqBindEmail) -> pb.ResCommon:
         return await self.call_method('bindEmail', req)
 
-    async def modify_password(self, req):
+    async def modify_password(self, req: pb.ReqModifyPassword) -> pb.ResCommon:
         return await self.call_method('modifyPassword', req)
 
-    async def bind_account(self, req):
+    async def bind_account(self, req: pb.ReqBindAccount) -> pb.ResCommon:
         return await self.call_method('bindAccount', req)
 
-    async def logout(self, req):
+    async def logout(self, req: pb.ReqLogout) -> pb.ResLogout:
         return await self.call_method('logout', req)
 
-    async def heatbeat(self, req):
+    async def heatbeat(self, req: pb.ReqHeatBeat) -> pb.ResCommon:
         return await self.call_method('heatbeat', req)
 
-    async def search_account_by_eid(self, req):
+    async def search_account_by_eid(self, req: pb.ReqSearchAccountByEidLobby) -> pb.ResSearchAccountbyEidLobby:
         return await self.call_method('searchAccountByEid', req)
 
-    async def login_beat(self, req):
+    async def login_beat(self, req: pb.ReqLoginBeat) -> pb.ResCommon:
         return await self.call_method('loginBeat', req)
 
-    async def create_nickname(self, req):
+    async def create_nickname(self, req: pb.ReqCreateNickname) -> pb.ResCommon:
         return await self.call_method('createNickname', req)
 
-    async def modify_nickname(self, req):
+    async def modify_nickname(self, req: pb.ReqModifyNickname) -> pb.ResCommon:
         return await self.call_method('modifyNickname', req)
 
-    async def modify_birthday(self, req):
+    async def modify_birthday(self, req: pb.ReqModifyBirthday) -> pb.ResCommon:
         return await self.call_method('modifyBirthday', req)
 
-    async def fetch_room(self, req):
+    async def fetch_room(self, req: pb.ReqCommon) -> pb.ResSelfRoom:
         return await self.call_method('fetchRoom', req)
 
-    async def fetch_gaming_info(self, req):
+    async def fetch_gaming_info(self, req: pb.ReqCommon) -> pb.ResFetchGamingInfo:
         return await self.call_method('fetchGamingInfo', req)
 
-    async def create_room(self, req):
+    async def create_room(self, req: pb.ReqCreateRoom) -> pb.ResCreateRoom:
         return await self.call_method('createRoom', req)
 
-    async def join_room(self, req):
+    async def join_room(self, req: pb.ReqJoinRoom) -> pb.ResJoinRoom:
         return await self.call_method('joinRoom', req)
 
-    async def leave_room(self, req):
+    async def leave_room(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('leaveRoom', req)
 
-    async def ready_play(self, req):
+    async def ready_play(self, req: pb.ReqRoomReady) -> pb.ResCommon:
         return await self.call_method('readyPlay', req)
 
-    async def dressing_status(self, req):
+    async def dressing_status(self, req: pb.ReqRoomDressing) -> pb.ResCommon:
         return await self.call_method('dressingStatus', req)
 
-    async def start_room(self, req):
+    async def start_room(self, req: pb.ReqRoomStart) -> pb.ResCommon:
         return await self.call_method('startRoom', req)
 
-    async def room_kick_player(self, req):
+    async def room_kick_player(self, req: pb.ReqRoomKickPlayer) -> pb.ResCommon:
         return await self.call_method('roomKickPlayer', req)
 
-    async def modify_room(self, req):
+    async def modify_room(self, req: pb.ReqModifyRoom) -> pb.ResCommon:
         return await self.call_method('modifyRoom', req)
 
-    async def add_room_robot(self, req):
+    async def add_room_robot(self, req: pb.ReqAddRoomRobot) -> pb.ResCommon:
         return await self.call_method('addRoomRobot', req)
 
-    async def match_game(self, req):
+    async def match_game(self, req: pb.ReqJoinMatchQueue) -> pb.ResCommon:
         return await self.call_method('matchGame', req)
 
-    async def cancel_match(self, req):
+    async def cancel_match(self, req: pb.ReqCancelMatchQueue) -> pb.ResCommon:
         return await self.call_method('cancelMatch', req)
 
-    async def fetch_account_info(self, req):
+    async def fetch_account_info(self, req: pb.ReqAccountInfo) -> pb.ResAccountInfo:
         return await self.call_method('fetchAccountInfo', req)
 
-    async def change_avatar(self, req):
+    async def change_avatar(self, req: pb.ReqChangeAvatar) -> pb.ResCommon:
         return await self.call_method('changeAvatar', req)
 
-    async def receive_version_reward(self, req):
+    async def receive_version_reward(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('receiveVersionReward', req)
 
-    async def fetch_account_statistic_info(self, req):
+    async def fetch_account_statistic_info(self, req: pb.ReqAccountStatisticInfo) -> pb.ResAccountStatisticInfo:
         return await self.call_method('fetchAccountStatisticInfo', req)
 
-    async def fetch_account_challenge_rank_info(self, req):
+    async def fetch_account_challenge_rank_info(self, req: pb.ReqAccountInfo) -> pb.ResAccountChallengeRankInfo:
         return await self.call_method('fetchAccountChallengeRankInfo', req)
 
-    async def fetch_account_character_info(self, req):
+    async def fetch_account_character_info(self, req: pb.ReqCommon) -> pb.ResAccountCharacterInfo:
         return await self.call_method('fetchAccountCharacterInfo', req)
 
-    async def shop_purchase(self, req):
+    async def shop_purchase(self, req: pb.ReqShopPurchase) -> pb.ResShopPurchase:
         return await self.call_method('shopPurchase', req)
 
-    async def fetch_game_record(self, req):
+    async def fetch_game_record(self, req: pb.ReqGameRecord) -> pb.ResGameRecord:
         return await self.call_method('fetchGameRecord', req)
 
-    async def read_game_record(self, req):
+    async def read_game_record(self, req: pb.ReqGameRecord) -> pb.ResCommon:
         return await self.call_method('readGameRecord', req)
 
-    async def fetch_game_record_list(self, req):
+    async def fetch_game_record_list(self, req: pb.ReqGameRecordList) -> pb.ResGameRecordList:
         return await self.call_method('fetchGameRecordList', req)
 
-    async def fetch_game_record_list_v2(self, req):
+    async def fetch_game_record_list_v2(self, req: pb.ReqGameRecordListV2) -> pb.ResGameRecordListV2:
         return await self.call_method('fetchGameRecordListV2', req)
 
-    async def fetch_next_game_record_list(self, req):
+    async def fetch_next_game_record_list(self, req: pb.ReqNextGameRecordList) -> pb.ResNextGameRecordList:
         return await self.call_method('fetchNextGameRecordList', req)
 
-    async def fetch_collected_game_record_list(self, req):
+    async def fetch_collected_game_record_list(self, req: pb.ReqCommon) -> pb.ResCollectedGameRecordList:
         return await self.call_method('fetchCollectedGameRecordList', req)
 
-    async def fetch_game_records_detail(self, req):
+    async def fetch_game_records_detail(self, req: pb.ReqGameRecordsDetail) -> pb.ResGameRecordsDetail:
         return await self.call_method('fetchGameRecordsDetail', req)
 
-    async def fetch_game_records_detail_v2(self, req):
+    async def fetch_game_records_detail_v2(self, req: pb.ReqGameRecordsDetailV2) -> pb.ResGameRecordsDetailV2:
         return await self.call_method('fetchGameRecordsDetailV2', req)
 
-    async def add_collected_game_record(self, req):
+    async def add_collected_game_record(self, req: pb.ReqAddCollectedGameRecord) -> pb.ResAddCollectedGameRecord:
         return await self.call_method('addCollectedGameRecord', req)
 
-    async def remove_collected_game_record(self, req):
+    async def remove_collected_game_record(self, req: pb.ReqRemoveCollectedGameRecord) -> pb.ResRemoveCollectedGameRecord:
         return await self.call_method('removeCollectedGameRecord', req)
 
-    async def change_collected_game_record_remarks(self, req):
+    async def change_collected_game_record_remarks(self, req: pb.ReqChangeCollectedGameRecordRemarks) -> pb.ResChangeCollectedGameRecordRemarks:
         return await self.call_method('changeCollectedGameRecordRemarks', req)
 
-    async def fetch_level_leaderboard(self, req):
+    async def fetch_level_leaderboard(self, req: pb.ReqLevelLeaderboard) -> pb.ResLevelLeaderboard:
         return await self.call_method('fetchLevelLeaderboard', req)
 
-    async def fetch_challenge_leaderboard(self, req):
+    async def fetch_challenge_leaderboard(self, req: pb.ReqChallangeLeaderboard) -> pb.ResChallengeLeaderboard:
         return await self.call_method('fetchChallengeLeaderboard', req)
 
-    async def fetch_muti_challenge_level(self, req):
+    async def fetch_muti_challenge_level(self, req: pb.ReqMutiChallengeLevel) -> pb.ResMutiChallengeLevel:
         return await self.call_method('fetchMutiChallengeLevel', req)
 
-    async def fetch_multi_account_brief(self, req):
+    async def fetch_multi_account_brief(self, req: pb.ReqMultiAccountId) -> pb.ResMultiAccountBrief:
         return await self.call_method('fetchMultiAccountBrief', req)
 
-    async def fetch_friend_list(self, req):
+    async def fetch_friend_list(self, req: pb.ReqCommon) -> pb.ResFriendList:
         return await self.call_method('fetchFriendList', req)
 
-    async def fetch_friend_apply_list(self, req):
+    async def fetch_friend_apply_list(self, req: pb.ReqCommon) -> pb.ResFriendApplyList:
         return await self.call_method('fetchFriendApplyList', req)
 
-    async def apply_friend(self, req):
+    async def apply_friend(self, req: pb.ReqApplyFriend) -> pb.ResCommon:
         return await self.call_method('applyFriend', req)
 
-    async def handle_friend_apply(self, req):
+    async def handle_friend_apply(self, req: pb.ReqHandleFriendApply) -> pb.ResCommon:
         return await self.call_method('handleFriendApply', req)
 
-    async def remove_friend(self, req):
+    async def remove_friend(self, req: pb.ReqRemoveFriend) -> pb.ResCommon:
         return await self.call_method('removeFriend', req)
 
-    async def search_account_by_id(self, req):
+    async def search_account_by_id(self, req: pb.ReqSearchAccountById) -> pb.ResSearchAccountById:
         return await self.call_method('searchAccountById', req)
 
-    async def search_account_by_pattern(self, req):
+    async def search_account_by_pattern(self, req: pb.ReqSearchAccountByPattern) -> pb.ResSearchAccountByPattern:
         return await self.call_method('searchAccountByPattern', req)
 
-    async def fetch_account_state(self, req):
+    async def fetch_account_state(self, req: pb.ReqAccountList) -> pb.ResAccountStates:
         return await self.call_method('fetchAccountState', req)
 
-    async def fetch_bag_info(self, req):
+    async def fetch_bag_info(self, req: pb.ReqCommon) -> pb.ResBagInfo:
         return await self.call_method('fetchBagInfo', req)
 
-    async def use_bag_item(self, req):
+    async def use_bag_item(self, req: pb.ReqUseBagItem) -> pb.ResCommon:
         return await self.call_method('useBagItem', req)
 
-    async def open_manual_item(self, req):
+    async def open_manual_item(self, req: pb.ReqOpenManualItem) -> pb.ResCommon:
         return await self.call_method('openManualItem', req)
 
-    async def open_random_reward_item(self, req):
+    async def open_random_reward_item(self, req: pb.ReqOpenRandomRewardItem) -> pb.ResOpenRandomRewardItem:
         return await self.call_method('openRandomRewardItem', req)
 
-    async def open_all_reward_item(self, req):
+    async def open_all_reward_item(self, req: pb.ReqOpenAllRewardItem) -> pb.ResOpenAllRewardItem:
         return await self.call_method('openAllRewardItem', req)
 
-    async def compose_shard(self, req):
+    async def compose_shard(self, req: pb.ReqComposeShard) -> pb.ResCommon:
         return await self.call_method('composeShard', req)
 
-    async def fetch_announcement(self, req):
+    async def fetch_announcement(self, req: pb.ReqFetchAnnouncement) -> pb.ResAnnouncement:
         return await self.call_method('fetchAnnouncement', req)
 
-    async def read_announcement(self, req):
+    async def read_announcement(self, req: pb.ReqReadAnnouncement) -> pb.ResCommon:
         return await self.call_method('readAnnouncement', req)
 
-    async def fetch_mail_info(self, req):
+    async def fetch_mail_info(self, req: pb.ReqCommon) -> pb.ResMailInfo:
         return await self.call_method('fetchMailInfo', req)
 
-    async def read_mail(self, req):
+    async def read_mail(self, req: pb.ReqReadMail) -> pb.ResCommon:
         return await self.call_method('readMail', req)
 
-    async def delete_mail(self, req):
+    async def delete_mail(self, req: pb.ReqDeleteMail) -> pb.ResCommon:
         return await self.call_method('deleteMail', req)
 
-    async def take_attachment_from_mail(self, req):
+    async def take_attachment_from_mail(self, req: pb.ReqTakeAttachment) -> pb.ResCommon:
         return await self.call_method('takeAttachmentFromMail', req)
 
-    async def receive_achievement_reward(self, req):
+    async def receive_achievement_reward(self, req: pb.ReqReceiveAchievementReward) -> pb.ResReceiveAchievementReward:
         return await self.call_method('receiveAchievementReward', req)
 
-    async def receive_achievement_group_reward(self, req):
+    async def receive_achievement_group_reward(self, req: pb.ReqReceiveAchievementGroupReward) -> pb.ResReceiveAchievementGroupReward:
         return await self.call_method('receiveAchievementGroupReward', req)
 
-    async def fetch_achievement_rate(self, req):
+    async def fetch_achievement_rate(self, req: pb.ReqCommon) -> pb.ResFetchAchievementRate:
         return await self.call_method('fetchAchievementRate', req)
 
-    async def fetch_achievement(self, req):
+    async def fetch_achievement(self, req: pb.ReqCommon) -> pb.ResAchievement:
         return await self.call_method('fetchAchievement', req)
 
-    async def buy_shi_lian(self, req):
+    async def buy_shi_lian(self, req: pb.ReqBuyShiLian) -> pb.ResCommon:
         return await self.call_method('buyShiLian', req)
 
-    async def match_shi_lian(self, req):
+    async def match_shi_lian(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('matchShiLian', req)
 
-    async def go_next_shi_lian(self, req):
+    async def go_next_shi_lian(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('goNextShiLian', req)
 
-    async def update_client_value(self, req):
+    async def update_client_value(self, req: pb.ReqUpdateClientValue) -> pb.ResCommon:
         return await self.call_method('updateClientValue', req)
 
-    async def fetch_client_value(self, req):
+    async def fetch_client_value(self, req: pb.ReqCommon) -> pb.ResClientValue:
         return await self.call_method('fetchClientValue', req)
 
-    async def client_message(self, req):
+    async def client_message(self, req: pb.ReqClientMessage) -> pb.ResCommon:
         return await self.call_method('clientMessage', req)
 
-    async def fetch_current_match_info(self, req):
+    async def fetch_current_match_info(self, req: pb.ReqCurrentMatchInfo) -> pb.ResCurrentMatchInfo:
         return await self.call_method('fetchCurrentMatchInfo', req)
 
-    async def user_complain(self, req):
+    async def user_complain(self, req: pb.ReqUserComplain) -> pb.ResCommon:
         return await self.call_method('userComplain', req)
 
-    async def fetch_revive_coin_info(self, req):
+    async def fetch_revive_coin_info(self, req: pb.ReqCommon) -> pb.ResReviveCoinInfo:
         return await self.call_method('fetchReviveCoinInfo', req)
 
-    async def gain_revive_coin(self, req):
+    async def gain_revive_coin(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('gainReviveCoin', req)
 
-    async def fetch_daily_task(self, req):
+    async def fetch_daily_task(self, req: pb.ReqCommon) -> pb.ResDailyTask:
         return await self.call_method('fetchDailyTask', req)
 
-    async def refresh_daily_task(self, req):
+    async def refresh_daily_task(self, req: pb.ReqRefreshDailyTask) -> pb.ResRefreshDailyTask:
         return await self.call_method('refreshDailyTask', req)
 
-    async def use_gift_code(self, req):
+    async def use_gift_code(self, req: pb.ReqUseGiftCode) -> pb.ResUseGiftCode:
         return await self.call_method('useGiftCode', req)
 
-    async def use_special_gift_code(self, req):
+    async def use_special_gift_code(self, req: pb.ReqUseGiftCode) -> pb.ResUseSpecialGiftCode:
         return await self.call_method('useSpecialGiftCode', req)
 
-    async def fetch_title_list(self, req):
+    async def fetch_title_list(self, req: pb.ReqCommon) -> pb.ResTitleList:
         return await self.call_method('fetchTitleList', req)
 
-    async def use_title(self, req):
+    async def use_title(self, req: pb.ReqUseTitle) -> pb.ResCommon:
         return await self.call_method('useTitle', req)
 
-    async def send_client_message(self, req):
+    async def send_client_message(self, req: pb.ReqSendClientMessage) -> pb.ResCommon:
         return await self.call_method('sendClientMessage', req)
 
-    async def fetch_game_live_info(self, req):
+    async def fetch_game_live_info(self, req: pb.ReqGameLiveInfo) -> pb.ResGameLiveInfo:
         return await self.call_method('fetchGameLiveInfo', req)
 
-    async def fetch_game_live_left_segment(self, req):
+    async def fetch_game_live_left_segment(self, req: pb.ReqGameLiveLeftSegment) -> pb.ResGameLiveLeftSegment:
         return await self.call_method('fetchGameLiveLeftSegment', req)
 
-    async def fetch_game_live_list(self, req):
+    async def fetch_game_live_list(self, req: pb.ReqGameLiveList) -> pb.ResGameLiveList:
         return await self.call_method('fetchGameLiveList', req)
 
-    async def fetch_comment_setting(self, req):
+    async def fetch_comment_setting(self, req: pb.ReqCommon) -> pb.ResCommentSetting:
         return await self.call_method('fetchCommentSetting', req)
 
-    async def update_comment_setting(self, req):
+    async def update_comment_setting(self, req: pb.ReqUpdateCommentSetting) -> pb.ResCommon:
         return await self.call_method('updateCommentSetting', req)
 
-    async def fetch_comment_list(self, req):
+    async def fetch_comment_list(self, req: pb.ReqFetchCommentList) -> pb.ResFetchCommentList:
         return await self.call_method('fetchCommentList', req)
 
-    async def fetch_comment_content(self, req):
+    async def fetch_comment_content(self, req: pb.ReqFetchCommentContent) -> pb.ResFetchCommentContent:
         return await self.call_method('fetchCommentContent', req)
 
-    async def leave_comment(self, req):
+    async def leave_comment(self, req: pb.ReqLeaveComment) -> pb.ResCommon:
         return await self.call_method('leaveComment', req)
 
-    async def delete_comment(self, req):
+    async def delete_comment(self, req: pb.ReqDeleteComment) -> pb.ResCommon:
         return await self.call_method('deleteComment', req)
 
-    async def update_read_comment(self, req):
+    async def update_read_comment(self, req: pb.ReqUpdateReadComment) -> pb.ResCommon:
         return await self.call_method('updateReadComment', req)
 
-    async def fetch_rolling_notice(self, req):
+    async def fetch_rolling_notice(self, req: pb.ReqFetchRollingNotice) -> pb.ResFetchRollingNotice:
         return await self.call_method('fetchRollingNotice', req)
 
-    async def fetch_maintain_notice(self, req):
+    async def fetch_maintain_notice(self, req: pb.ReqCommon) -> pb.ResFetchMaintainNotice:
         return await self.call_method('fetchMaintainNotice', req)
 
-    async def fetch_server_time(self, req):
+    async def fetch_server_time(self, req: pb.ReqCommon) -> pb.ResServerTime:
         return await self.call_method('fetchServerTime', req)
 
-    async def fetch_platform_products(self, req):
+    async def fetch_platform_products(self, req: pb.ReqPlatformBillingProducts) -> pb.ResPlatformBillingProducts:
         return await self.call_method('fetchPlatformProducts', req)
 
-    async def fetch_random_character(self, req):
+    async def fetch_random_character(self, req: pb.ReqCommon) -> pb.ResRandomCharacter:
         return await self.call_method('fetchRandomCharacter', req)
 
-    async def set_random_character(self, req):
+    async def set_random_character(self, req: pb.ReqRandomCharacter) -> pb.ResCommon:
         return await self.call_method('setRandomCharacter', req)
 
-    async def cancel_google_play_order(self, req):
+    async def cancel_google_play_order(self, req: pb.ReqCancelGooglePlayOrder) -> pb.ResCommon:
         return await self.call_method('cancelGooglePlayOrder', req)
 
-    async def open_chest(self, req):
+    async def open_chest(self, req: pb.ReqOpenChest) -> pb.ResOpenChest:
         return await self.call_method('openChest', req)
 
-    async def buy_from_chest_shop(self, req):
+    async def buy_from_chest_shop(self, req: pb.ReqBuyFromChestShop) -> pb.ResBuyFromChestShop:
         return await self.call_method('buyFromChestShop', req)
 
-    async def fetch_daily_sign_in_info(self, req):
+    async def fetch_daily_sign_in_info(self, req: pb.ReqCommon) -> pb.ResDailySignInInfo:
         return await self.call_method('fetchDailySignInInfo', req)
 
-    async def do_daily_sign_in(self, req):
+    async def do_daily_sign_in(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('doDailySignIn', req)
 
-    async def do_activity_sign_in(self, req):
+    async def do_activity_sign_in(self, req: pb.ReqDoActivitySignIn) -> pb.ResDoActivitySignIn:
         return await self.call_method('doActivitySignIn', req)
 
-    async def fetch_character_info(self, req):
+    async def fetch_character_info(self, req: pb.ReqCommon) -> pb.ResCharacterInfo:
         return await self.call_method('fetchCharacterInfo', req)
 
-    async def update_character_sort(self, req):
+    async def update_character_sort(self, req: pb.ReqUpdateCharacterSort) -> pb.ResCommon:
         return await self.call_method('updateCharacterSort', req)
 
-    async def change_main_character(self, req):
+    async def change_main_character(self, req: pb.ReqChangeMainCharacter) -> pb.ResCommon:
         return await self.call_method('changeMainCharacter', req)
 
-    async def change_character_skin(self, req):
+    async def change_character_skin(self, req: pb.ReqChangeCharacterSkin) -> pb.ResCommon:
         return await self.call_method('changeCharacterSkin', req)
 
-    async def change_character_view(self, req):
+    async def change_character_view(self, req: pb.ReqChangeCharacterView) -> pb.ResCommon:
         return await self.call_method('changeCharacterView', req)
 
-    async def set_hidden_character(self, req):
+    async def set_hidden_character(self, req: pb.ReqSetHiddenCharacter) -> pb.ResSetHiddenCharacter:
         return await self.call_method('setHiddenCharacter', req)
 
-    async def send_gift_to_character(self, req):
+    async def send_gift_to_character(self, req: pb.ReqSendGiftToCharacter) -> pb.ResSendGiftToCharacter:
         return await self.call_method('sendGiftToCharacter', req)
 
-    async def sell_item(self, req):
+    async def sell_item(self, req: pb.ReqSellItem) -> pb.ResCommon:
         return await self.call_method('sellItem', req)
 
-    async def fetch_common_view(self, req):
+    async def fetch_common_view(self, req: pb.ReqCommon) -> pb.ResCommonView:
         return await self.call_method('fetchCommonView', req)
 
-    async def change_common_view(self, req):
+    async def change_common_view(self, req: pb.ReqChangeCommonView) -> pb.ResCommon:
         return await self.call_method('changeCommonView', req)
 
-    async def save_common_views(self, req):
+    async def save_common_views(self, req: pb.ReqSaveCommonViews) -> pb.ResCommon:
         return await self.call_method('saveCommonViews', req)
 
-    async def fetch_common_views(self, req):
+    async def fetch_common_views(self, req: pb.ReqCommonViews) -> pb.ResCommonViews:
         return await self.call_method('fetchCommonViews', req)
 
-    async def fetch_all_common_views(self, req):
+    async def fetch_all_common_views(self, req: pb.ReqCommon) -> pb.ResAllcommonViews:
         return await self.call_method('fetchAllCommonViews', req)
 
-    async def use_common_view(self, req):
+    async def use_common_view(self, req: pb.ReqUseCommonView) -> pb.ResCommon:
         return await self.call_method('useCommonView', req)
 
-    async def upgrade_character(self, req):
+    async def upgrade_character(self, req: pb.ReqUpgradeCharacter) -> pb.ResUpgradeCharacter:
         return await self.call_method('upgradeCharacter', req)
 
-    async def add_finished_ending(self, req):
+    async def add_finished_ending(self, req: pb.ReqFinishedEnding) -> pb.ResCommon:
         return await self.call_method('addFinishedEnding', req)
 
-    async def receive_ending_reward(self, req):
+    async def receive_ending_reward(self, req: pb.ReqFinishedEnding) -> pb.ResCommon:
         return await self.call_method('receiveEndingReward', req)
 
-    async def game_master_command(self, req):
+    async def game_master_command(self, req: pb.ReqGMCommand) -> pb.ResCommon:
         return await self.call_method('gameMasterCommand', req)
 
-    async def fetch_shop_info(self, req):
+    async def fetch_shop_info(self, req: pb.ReqCommon) -> pb.ResShopInfo:
         return await self.call_method('fetchShopInfo', req)
 
-    async def buy_from_shop(self, req):
+    async def buy_from_shop(self, req: pb.ReqBuyFromShop) -> pb.ResBuyFromShop:
         return await self.call_method('buyFromShop', req)
 
-    async def buy_from_zhp(self, req):
+    async def buy_from_zhp(self, req: pb.ReqBuyFromZHP) -> pb.ResCommon:
         return await self.call_method('buyFromZHP', req)
 
-    async def refresh_zhp_shop(self, req):
+    async def refresh_zhp_shop(self, req: pb.ReqReshZHPShop) -> pb.ResRefreshZHPShop:
         return await self.call_method('refreshZHPShop', req)
 
-    async def fetch_month_ticket_info(self, req):
+    async def fetch_month_ticket_info(self, req: pb.ReqCommon) -> pb.ResMonthTicketInfo:
         return await self.call_method('fetchMonthTicketInfo', req)
 
-    async def pay_month_ticket(self, req):
+    async def pay_month_ticket(self, req: pb.ReqCommon) -> pb.ResPayMonthTicket:
         return await self.call_method('payMonthTicket', req)
 
-    async def exchange_currency(self, req):
+    async def exchange_currency(self, req: pb.ReqExchangeCurrency) -> pb.ResCommon:
         return await self.call_method('exchangeCurrency', req)
 
-    async def exchange_chest_stone(self, req):
+    async def exchange_chest_stone(self, req: pb.ReqExchangeCurrency) -> pb.ResCommon:
         return await self.call_method('exchangeChestStone', req)
 
-    async def exchange_diamond(self, req):
+    async def exchange_diamond(self, req: pb.ReqExchangeCurrency) -> pb.ResCommon:
         return await self.call_method('exchangeDiamond', req)
 
-    async def fetch_server_settings(self, req):
+    async def fetch_server_settings(self, req: pb.ReqCommon) -> pb.ResServerSettings:
         return await self.call_method('fetchServerSettings', req)
 
-    async def fetch_account_settings(self, req):
+    async def fetch_account_settings(self, req: pb.ReqCommon) -> pb.ResAccountSettings:
         return await self.call_method('fetchAccountSettings', req)
 
-    async def update_account_settings(self, req):
+    async def update_account_settings(self, req: pb.ReqUpdateAccountSettings) -> pb.ResCommon:
         return await self.call_method('updateAccountSettings', req)
 
-    async def fetch_mod_nickname_time(self, req):
+    async def fetch_mod_nickname_time(self, req: pb.ReqCommon) -> pb.ResModNicknameTime:
         return await self.call_method('fetchModNicknameTime', req)
 
-    async def create_wechat_native_order(self, req):
+    async def create_wechat_native_order(self, req: pb.ReqCreateWechatNativeOrder) -> pb.ResCreateWechatNativeOrder:
         return await self.call_method('createWechatNativeOrder', req)
 
-    async def create_wechat_app_order(self, req):
+    async def create_wechat_app_order(self, req: pb.ReqCreateWechatAppOrder) -> pb.ResCreateWechatAppOrder:
         return await self.call_method('createWechatAppOrder', req)
 
-    async def create_alipay_order(self, req):
+    async def create_alipay_order(self, req: pb.ReqCreateAlipayOrder) -> pb.ResCreateAlipayOrder:
         return await self.call_method('createAlipayOrder', req)
 
-    async def create_alipay_scan_order(self, req):
+    async def create_alipay_scan_order(self, req: pb.ReqCreateAlipayScanOrder) -> pb.ResCreateAlipayScanOrder:
         return await self.call_method('createAlipayScanOrder', req)
 
-    async def create_alipay_app_order(self, req):
+    async def create_alipay_app_order(self, req: pb.ReqCreateAlipayAppOrder) -> pb.ResCreateAlipayAppOrder:
         return await self.call_method('createAlipayAppOrder', req)
 
-    async def create_jp_credit_card_order(self, req):
+    async def create_jp_credit_card_order(self, req: pb.ReqCreateJPCreditCardOrder) -> pb.ResCreateJPCreditCardOrder:
         return await self.call_method('createJPCreditCardOrder', req)
 
-    async def create_jp_paypal_order(self, req):
+    async def create_jp_paypal_order(self, req: pb.ReqCreateJPPaypalOrder) -> pb.ResCreateJPPaypalOrder:
         return await self.call_method('createJPPaypalOrder', req)
 
-    async def create_jp_au_order(self, req):
+    async def create_jp_au_order(self, req: pb.ReqCreateJPAuOrder) -> pb.ResCreateJPAuOrder:
         return await self.call_method('createJPAuOrder', req)
 
-    async def create_jp_docomo_order(self, req):
+    async def create_jp_docomo_order(self, req: pb.ReqCreateJPDocomoOrder) -> pb.ResCreateJPDocomoOrder:
         return await self.call_method('createJPDocomoOrder', req)
 
-    async def create_jp_web_money_order(self, req):
+    async def create_jp_web_money_order(self, req: pb.ReqCreateJPWebMoneyOrder) -> pb.ResCreateJPWebMoneyOrder:
         return await self.call_method('createJPWebMoneyOrder', req)
 
-    async def create_jp_softbank_order(self, req):
+    async def create_jp_softbank_order(self, req: pb.ReqCreateJPSoftbankOrder) -> pb.ResCreateJPSoftbankOrder:
         return await self.call_method('createJPSoftbankOrder', req)
 
-    async def create_jp_pay_pay_order(self, req):
+    async def create_jp_pay_pay_order(self, req: pb.ReqCreateJPPayPayOrder) -> pb.ResCreateJPPayPayOrder:
         return await self.call_method('createJPPayPayOrder', req)
 
-    async def fetch_jp_common_credit_card_order(self, req):
+    async def fetch_jp_common_credit_card_order(self, req: pb.ReqFetchJPCommonCreditCardOrder) -> pb.ResFetchJPCommonCreditCardOrder:
         return await self.call_method('fetchJPCommonCreditCardOrder', req)
 
-    async def create_jpgmo_order(self, req):
+    async def create_jpgmo_order(self, req: pb.ReqCreateJPGMOOrder) -> pb.ResCreateJPGMOOrder:
         return await self.call_method('createJPGMOOrder', req)
 
-    async def create_en_paypal_order(self, req):
+    async def create_en_paypal_order(self, req: pb.ReqCreateENPaypalOrder) -> pb.ResCreateENPaypalOrder:
         return await self.call_method('createENPaypalOrder', req)
 
-    async def create_en_master_card_order(self, req):
+    async def create_en_master_card_order(self, req: pb.ReqCreateENMasterCardOrder) -> pb.ResCreateENMasterCardOrder:
         return await self.call_method('createENMasterCardOrder', req)
 
-    async def create_en_visa_order(self, req):
+    async def create_en_visa_order(self, req: pb.ReqCreateENVisaOrder) -> pb.ResCreateENVisaOrder:
         return await self.call_method('createENVisaOrder', req)
 
-    async def create_enjcb_order(self, req):
+    async def create_enjcb_order(self, req: pb.ReqCreateENJCBOrder) -> pb.ResCreateENJCBOrder:
         return await self.call_method('createENJCBOrder', req)
 
-    async def create_en_alipay_order(self, req):
+    async def create_en_alipay_order(self, req: pb.ReqCreateENAlipayOrder) -> pb.ResCreateENAlipayOrder:
         return await self.call_method('createENAlipayOrder', req)
 
-    async def create_kr_paypal_order(self, req):
+    async def create_kr_paypal_order(self, req: pb.ReqCreateKRPaypalOrder) -> pb.ResCreateKRPaypalOrder:
         return await self.call_method('createKRPaypalOrder', req)
 
-    async def create_kr_master_card_order(self, req):
+    async def create_kr_master_card_order(self, req: pb.ReqCreateKRMasterCardOrder) -> pb.ResCreateKRMasterCardOrder:
         return await self.call_method('createKRMasterCardOrder', req)
 
-    async def create_kr_visa_order(self, req):
+    async def create_kr_visa_order(self, req: pb.ReqCreateKRVisaOrder) -> pb.ResCreateKRVisaOrder:
         return await self.call_method('createKRVisaOrder', req)
 
-    async def create_krjcb_order(self, req):
+    async def create_krjcb_order(self, req: pb.ReqCreateKRJCBOrder) -> pb.ResCreateKRJCBOrder:
         return await self.call_method('createKRJCBOrder', req)
 
-    async def create_kr_alipay_order(self, req):
+    async def create_kr_alipay_order(self, req: pb.ReqCreateKRAlipayOrder) -> pb.ResCreateKRAlipayOrder:
         return await self.call_method('createKRAlipayOrder', req)
 
-    async def create_dmm_order(self, req):
+    async def create_dmm_order(self, req: pb.ReqCreateDMMOrder) -> pb.ResCreateDmmOrder:
         return await self.call_method('createDMMOrder', req)
 
-    async def create_iap_order(self, req):
+    async def create_iap_order(self, req: pb.ReqCreateIAPOrder) -> pb.ResCreateIAPOrder:
         return await self.call_method('createIAPOrder', req)
 
-    async def create_steam_order(self, req):
+    async def create_steam_order(self, req: pb.ReqCreateSteamOrder) -> pb.ResCreateSteamOrder:
         return await self.call_method('createSteamOrder', req)
 
-    async def verify_steam_order(self, req):
+    async def verify_steam_order(self, req: pb.ReqVerifySteamOrder) -> pb.ResCommon:
         return await self.call_method('verifySteamOrder', req)
 
-    async def create_my_card_android_order(self, req):
+    async def create_my_card_android_order(self, req: pb.ReqCreateMyCardOrder) -> pb.ResCreateMyCardOrder:
         return await self.call_method('createMyCardAndroidOrder', req)
 
-    async def create_my_card_web_order(self, req):
+    async def create_my_card_web_order(self, req: pb.ReqCreateMyCardOrder) -> pb.ResCreateMyCardOrder:
         return await self.call_method('createMyCardWebOrder', req)
 
-    async def create_paypal_order(self, req):
+    async def create_paypal_order(self, req: pb.ReqCreatePaypalOrder) -> pb.ResCreatePaypalOrder:
         return await self.call_method('createPaypalOrder', req)
 
-    async def create_xsolla_order(self, req):
+    async def create_xsolla_order(self, req: pb.ReqCreateXsollaOrder) -> pb.ResCreateXsollaOrder:
         return await self.call_method('createXsollaOrder', req)
 
-    async def create_xsolla_v4_order(self, req):
+    async def create_xsolla_v4_order(self, req: pb.ReqCreateXsollaOrder) -> pb.ResCreateXsollaOrder:
         return await self.call_method('createXsollaV4Order', req)
 
-    async def verify_my_card_order(self, req):
+    async def verify_my_card_order(self, req: pb.ReqVerifyMyCardOrder) -> pb.ResCommon:
         return await self.call_method('verifyMyCardOrder', req)
 
-    async def verification_iap_order(self, req):
+    async def verification_iap_order(self, req: pb.ReqVerificationIAPOrder) -> pb.ResVerificationIAPOrder:
         return await self.call_method('verificationIAPOrder', req)
 
-    async def create_yostar_sdk_order(self, req):
+    async def create_yostar_sdk_order(self, req: pb.ReqCreateYostarOrder) -> pb.ResCreateYostarOrder:
         return await self.call_method('createYostarSDKOrder', req)
 
-    async def create_billing_order(self, req):
+    async def create_billing_order(self, req: pb.ReqCreateBillingOrder) -> pb.ResCreateBillingOrder:
         return await self.call_method('createBillingOrder', req)
 
-    async def solve_google_play_order(self, req):
+    async def solve_google_play_order(self, req: pb.ReqSolveGooglePlayOrder) -> pb.ResCommon:
         return await self.call_method('solveGooglePlayOrder', req)
 
-    async def solve_google_pay_order_v3(self, req):
+    async def solve_google_pay_order_v3(self, req: pb.ReqSolveGooglePlayOrderV3) -> pb.ResCommon:
         return await self.call_method('solveGooglePayOrderV3', req)
 
-    async def deliver_aa32_order(self, req):
+    async def deliver_aa32_order(self, req: pb.ReqDeliverAA32Order) -> pb.ResCommon:
         return await self.call_method('deliverAA32Order', req)
 
-    async def fetch_misc(self, req):
+    async def fetch_misc(self, req: pb.ReqCommon) -> pb.ResMisc:
         return await self.call_method('fetchMisc', req)
 
-    async def modify_signature(self, req):
+    async def modify_signature(self, req: pb.ReqModifySignature) -> pb.ResCommon:
         return await self.call_method('modifySignature', req)
 
-    async def fetch_id_card_info(self, req):
+    async def fetch_id_card_info(self, req: pb.ReqCommon) -> pb.ResIDCardInfo:
         return await self.call_method('fetchIDCardInfo', req)
 
-    async def update_id_card_info(self, req):
+    async def update_id_card_info(self, req: pb.ReqUpdateIDCardInfo) -> pb.ResCommon:
         return await self.call_method('updateIDCardInfo', req)
 
-    async def fetch_vip_reward(self, req):
+    async def fetch_vip_reward(self, req: pb.ReqCommon) -> pb.ResVipReward:
         return await self.call_method('fetchVipReward', req)
 
-    async def gain_vip_reward(self, req):
+    async def gain_vip_reward(self, req: pb.ReqGainVipReward) -> pb.ResCommon:
         return await self.call_method('gainVipReward', req)
 
-    async def fetch_refund_order(self, req):
+    async def fetch_refund_order(self, req: pb.ReqCommon) -> pb.ResFetchRefundOrder:
         return await self.call_method('fetchRefundOrder', req)
 
-    async def fetch_customized_contest_list(self, req):
+    async def fetch_customized_contest_list(self, req: pb.ReqFetchCustomizedContestList) -> pb.ResFetchCustomizedContestList:
         return await self.call_method('fetchCustomizedContestList', req)
 
-    async def fetch_customized_contest_auth_info(self, req):
+    async def fetch_customized_contest_auth_info(self, req: pb.ReqFetchCustomizedContestAuthInfo) -> pb.ResFetchCustomizedContestAuthInfo:
         return await self.call_method('fetchCustomizedContestAuthInfo', req)
 
-    async def enter_customized_contest(self, req):
+    async def enter_customized_contest(self, req: pb.ReqEnterCustomizedContest) -> pb.ResEnterCustomizedContest:
         return await self.call_method('enterCustomizedContest', req)
 
-    async def leave_customized_contest(self, req):
+    async def leave_customized_contest(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('leaveCustomizedContest', req)
 
-    async def fetch_customized_contest_online_info(self, req):
+    async def fetch_customized_contest_online_info(self, req: pb.ReqFetchCustomizedContestOnlineInfo) -> pb.ResFetchCustomizedContestOnlineInfo:
         return await self.call_method('fetchCustomizedContestOnlineInfo', req)
 
-    async def fetch_customized_contest_by_contest_id(self, req):
+    async def fetch_customized_contest_by_contest_id(self, req: pb.ReqFetchCustomizedContestByContestId) -> pb.ResFetchCustomizedContestByContestId:
         return await self.call_method('fetchCustomizedContestByContestId', req)
 
-    async def signup_customized_contest(self, req):
+    async def signup_customized_contest(self, req: pb.ReqSignupCustomizedContest) -> pb.ResSignupCustomizedContest:
         return await self.call_method('signupCustomizedContest', req)
 
-    async def start_customized_contest(self, req):
+    async def start_customized_contest(self, req: pb.ReqStartCustomizedContest) -> pb.ResCommon:
         return await self.call_method('startCustomizedContest', req)
 
-    async def stop_customized_contest(self, req):
+    async def stop_customized_contest(self, req: pb.ReqStopCustomizedContest) -> pb.ResCommon:
         return await self.call_method('stopCustomizedContest', req)
 
-    async def join_customized_contest_chat_room(self, req):
+    async def join_customized_contest_chat_room(self, req: pb.ReqJoinCustomizedContestChatRoom) -> pb.ResJoinCustomizedContestChatRoom:
         return await self.call_method('joinCustomizedContestChatRoom', req)
 
-    async def leave_customized_contest_chat_room(self, req):
+    async def leave_customized_contest_chat_room(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('leaveCustomizedContestChatRoom', req)
 
-    async def say_chat_message(self, req):
+    async def say_chat_message(self, req: pb.ReqSayChatMessage) -> pb.ResCommon:
         return await self.call_method('sayChatMessage', req)
 
-    async def fetch_customized_contest_game_records(self, req):
+    async def fetch_customized_contest_game_records(self, req: pb.ReqFetchCustomizedContestGameRecords) -> pb.ResFetchCustomizedContestGameRecords:
         return await self.call_method('fetchCustomizedContestGameRecords', req)
 
-    async def fetch_customized_contest_game_live_list(self, req):
+    async def fetch_customized_contest_game_live_list(self, req: pb.ReqFetchCustomizedContestGameLiveList) -> pb.ResFetchCustomizedContestGameLiveList:
         return await self.call_method('fetchCustomizedContestGameLiveList', req)
 
-    async def follow_customized_contest(self, req):
+    async def follow_customized_contest(self, req: pb.ReqTargetCustomizedContest) -> pb.ResCommon:
         return await self.call_method('followCustomizedContest', req)
 
-    async def unfollow_customized_contest(self, req):
+    async def unfollow_customized_contest(self, req: pb.ReqTargetCustomizedContest) -> pb.ResCommon:
         return await self.call_method('unfollowCustomizedContest', req)
 
-    async def fetch_contest_team_rank(self, req):
+    async def fetch_contest_team_rank(self, req: pb.ReqFetchContestTeamRank) -> pb.ResFetchContestTeamRank:
         return await self.call_method('fetchContestTeamRank', req)
 
-    async def fetch_contest_team_member(self, req):
+    async def fetch_contest_team_member(self, req: pb.ReqFetchContestTeamMember) -> pb.ResFetchContestTeamMember:
         return await self.call_method('fetchContestTeamMember', req)
 
-    async def fetch_contest_team_player_rank(self, req):
+    async def fetch_contest_team_player_rank(self, req: pb.ReqFetchContestTeamPlayerRank) -> pb.ResFetchContestPlayerRank:
         return await self.call_method('fetchContestTeamPlayerRank', req)
 
-    async def fetch_contest_player_rank(self, req):
+    async def fetch_contest_player_rank(self, req: pb.ReqFetchContestPlayerRank) -> pb.ResFetchContestPlayerRank:
         return await self.call_method('fetchContestPlayerRank', req)
 
-    async def fetch_activity_list(self, req):
+    async def fetch_activity_list(self, req: pb.ReqCommon) -> pb.ResActivityList:
         return await self.call_method('fetchActivityList', req)
 
-    async def fetch_account_activity_data(self, req):
+    async def fetch_account_activity_data(self, req: pb.ReqCommon) -> pb.ResAccountActivityData:
         return await self.call_method('fetchAccountActivityData', req)
 
-    async def exchange_activity_item(self, req):
+    async def exchange_activity_item(self, req: pb.ReqExchangeActivityItem) -> pb.ResExchangeActivityItem:
         return await self.call_method('exchangeActivityItem', req)
 
-    async def complete_activity_task(self, req):
+    async def complete_activity_task(self, req: pb.ReqCompleteActivityTask) -> pb.ResCommon:
         return await self.call_method('completeActivityTask', req)
 
-    async def complete_activity_task_batch(self, req):
+    async def complete_activity_task_batch(self, req: pb.ReqCompleteActivityTaskBatch) -> pb.ResCommon:
         return await self.call_method('completeActivityTaskBatch', req)
 
-    async def complete_activity_flip_task(self, req):
+    async def complete_activity_flip_task(self, req: pb.ReqCompleteActivityTask) -> pb.ResCommon:
         return await self.call_method('completeActivityFlipTask', req)
 
-    async def complete_period_activity_task(self, req):
+    async def complete_period_activity_task(self, req: pb.ReqCompleteActivityTask) -> pb.ResCommon:
         return await self.call_method('completePeriodActivityTask', req)
 
-    async def complete_period_activity_task_batch(self, req):
+    async def complete_period_activity_task_batch(self, req: pb.ReqCompletePeriodActivityTaskBatch) -> pb.ResCommon:
         return await self.call_method('completePeriodActivityTaskBatch', req)
 
-    async def complete_random_activity_task(self, req):
+    async def complete_random_activity_task(self, req: pb.ReqCompleteActivityTask) -> pb.ResCommon:
         return await self.call_method('completeRandomActivityTask', req)
 
-    async def complete_random_activity_task_batch(self, req):
+    async def complete_random_activity_task_batch(self, req: pb.ReqCompleteActivityTaskBatch) -> pb.ResCommon:
         return await self.call_method('completeRandomActivityTaskBatch', req)
 
-    async def receive_activity_flip_task(self, req):
+    async def receive_activity_flip_task(self, req: pb.ReqReceiveActivityFlipTask) -> pb.ResReceiveActivityFlipTask:
         return await self.call_method('receiveActivityFlipTask', req)
 
-    async def complete_segment_task_reward(self, req):
+    async def complete_segment_task_reward(self, req: pb.ReqCompleteSegmentTaskReward) -> pb.ResCompleteSegmentTaskReward:
         return await self.call_method('completeSegmentTaskReward', req)
 
-    async def fetch_activity_flip_info(self, req):
+    async def fetch_activity_flip_info(self, req: pb.ReqFetchActivityFlipInfo) -> pb.ResFetchActivityFlipInfo:
         return await self.call_method('fetchActivityFlipInfo', req)
 
-    async def gain_accumulated_point_activity_reward(self, req):
+    async def gain_accumulated_point_activity_reward(self, req: pb.ReqGainAccumulatedPointActivityReward) -> pb.ResCommon:
         return await self.call_method('gainAccumulatedPointActivityReward', req)
 
-    async def gain_multi_point_activity_reward(self, req):
+    async def gain_multi_point_activity_reward(self, req: pb.ReqGainMultiPointActivityReward) -> pb.ResCommon:
         return await self.call_method('gainMultiPointActivityReward', req)
 
-    async def fetch_rank_point_leaderboard(self, req):
+    async def fetch_rank_point_leaderboard(self, req: pb.ReqFetchRankPointLeaderboard) -> pb.ResFetchRankPointLeaderboard:
         return await self.call_method('fetchRankPointLeaderboard', req)
 
-    async def gain_rank_point_reward(self, req):
+    async def gain_rank_point_reward(self, req: pb.ReqGainRankPointReward) -> pb.ResCommon:
         return await self.call_method('gainRankPointReward', req)
 
-    async def richman_activity_next_move(self, req):
+    async def richman_activity_next_move(self, req: pb.ReqRichmanNextMove) -> pb.ResRichmanNextMove:
         return await self.call_method('richmanActivityNextMove', req)
 
-    async def richman_acitivity_special_move(self, req):
+    async def richman_acitivity_special_move(self, req: pb.ReqRichmanSpecialMove) -> pb.ResRichmanNextMove:
         return await self.call_method('richmanAcitivitySpecialMove', req)
 
-    async def richman_activity_chest_info(self, req):
+    async def richman_activity_chest_info(self, req: pb.ReqRichmanChestInfo) -> pb.ResRichmanChestInfo:
         return await self.call_method('richmanActivityChestInfo', req)
 
-    async def create_game_observe_auth(self, req):
+    async def create_game_observe_auth(self, req: pb.ReqCreateGameObserveAuth) -> pb.ResCreateGameObserveAuth:
         return await self.call_method('createGameObserveAuth', req)
 
-    async def refresh_game_observe_auth(self, req):
+    async def refresh_game_observe_auth(self, req: pb.ReqRefreshGameObserveAuth) -> pb.ResRefreshGameObserveAuth:
         return await self.call_method('refreshGameObserveAuth', req)
 
-    async def fetch_activity_buff(self, req):
+    async def fetch_activity_buff(self, req: pb.ReqCommon) -> pb.ResActivityBuff:
         return await self.call_method('fetchActivityBuff', req)
 
-    async def upgrade_activity_buff(self, req):
+    async def upgrade_activity_buff(self, req: pb.ReqUpgradeActivityBuff) -> pb.ResActivityBuff:
         return await self.call_method('upgradeActivityBuff', req)
 
-    async def upgrade_activity_level(self, req):
+    async def upgrade_activity_level(self, req: pb.ReqUpgradeActivityLevel) -> pb.ResUpgradeActivityLevel:
         return await self.call_method('upgradeActivityLevel', req)
 
-    async def receive_upgrade_activity_reward(self, req):
+    async def receive_upgrade_activity_reward(self, req: pb.ReqReceiveUpgradeActivityReward) -> pb.ResReceiveUpgradeActivityReward:
         return await self.call_method('receiveUpgradeActivityReward', req)
 
-    async def upgrade_challenge(self, req):
+    async def upgrade_challenge(self, req: pb.ReqCommon) -> pb.ResUpgradeChallenge:
         return await self.call_method('upgradeChallenge', req)
 
-    async def refresh_challenge(self, req):
+    async def refresh_challenge(self, req: pb.ReqCommon) -> pb.ResRefreshChallenge:
         return await self.call_method('refreshChallenge', req)
 
-    async def fetch_challenge_info(self, req):
+    async def fetch_challenge_info(self, req: pb.ReqCommon) -> pb.ResFetchChallengeInfo:
         return await self.call_method('fetchChallengeInfo', req)
 
-    async def force_complete_challenge_task(self, req):
+    async def force_complete_challenge_task(self, req: pb.ReqForceCompleteChallengeTask) -> pb.ResCommon:
         return await self.call_method('forceCompleteChallengeTask', req)
 
-    async def fetch_challenge_season(self, req):
+    async def fetch_challenge_season(self, req: pb.ReqCommon) -> pb.ResChallengeSeasonInfo:
         return await self.call_method('fetchChallengeSeason', req)
 
-    async def receive_challenge_rank_reward(self, req):
+    async def receive_challenge_rank_reward(self, req: pb.ReqReceiveChallengeRankReward) -> pb.ResReceiveChallengeRankReward:
         return await self.call_method('receiveChallengeRankReward', req)
 
-    async def fetch_ab_match_info(self, req):
+    async def fetch_ab_match_info(self, req: pb.ReqCommon) -> pb.ResFetchABMatch:
         return await self.call_method('fetchABMatchInfo', req)
 
-    async def buy_in_ab_match(self, req):
+    async def buy_in_ab_match(self, req: pb.ReqBuyInABMatch) -> pb.ResCommon:
         return await self.call_method('buyInABMatch', req)
 
-    async def receive_ab_match_reward(self, req):
+    async def receive_ab_match_reward(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('receiveABMatchReward', req)
 
-    async def quit_ab_match(self, req):
+    async def quit_ab_match(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('quitABMatch', req)
 
-    async def start_unified_match(self, req):
+    async def start_unified_match(self, req: pb.ReqStartUnifiedMatch) -> pb.ResCommon:
         return await self.call_method('startUnifiedMatch', req)
 
-    async def cancel_unified_match(self, req):
+    async def cancel_unified_match(self, req: pb.ReqCancelUnifiedMatch) -> pb.ResCommon:
         return await self.call_method('cancelUnifiedMatch', req)
 
-    async def fetch_game_point_rank(self, req):
+    async def fetch_game_point_rank(self, req: pb.ReqGamePointRank) -> pb.ResGamePointRank:
         return await self.call_method('fetchGamePointRank', req)
 
-    async def fetch_self_game_point_rank(self, req):
+    async def fetch_self_game_point_rank(self, req: pb.ReqGamePointRank) -> pb.ResFetchSelfGamePointRank:
         return await self.call_method('fetchSelfGamePointRank', req)
 
-    async def read_sns(self, req):
+    async def read_sns(self, req: pb.ReqReadSNS) -> pb.ResReadSNS:
         return await self.call_method('readSNS', req)
 
-    async def reply_sns(self, req):
+    async def reply_sns(self, req: pb.ReqReplySNS) -> pb.ResReplySNS:
         return await self.call_method('replySNS', req)
 
-    async def like_sns(self, req):
+    async def like_sns(self, req: pb.ReqLikeSNS) -> pb.ResLikeSNS:
         return await self.call_method('likeSNS', req)
 
-    async def dig_mine(self, req):
+    async def dig_mine(self, req: pb.ReqDigMine) -> pb.ResDigMine:
         return await self.call_method('digMine', req)
 
-    async def fetch_last_privacy(self, req):
+    async def fetch_last_privacy(self, req: pb.ReqFetchLastPrivacy) -> pb.ResFetchLastPrivacy:
         return await self.call_method('fetchLastPrivacy', req)
 
-    async def check_privacy(self, req):
+    async def check_privacy(self, req: pb.ReqCheckPrivacy) -> pb.ResCommon:
         return await self.call_method('checkPrivacy', req)
 
-    async def fetch_rpg_battle_history(self, req):
+    async def fetch_rpg_battle_history(self, req: pb.ReqFetchRPGBattleHistory) -> pb.ResFetchRPGBattleHistory:
         return await self.call_method('fetchRPGBattleHistory', req)
 
-    async def fetch_rpg_battle_history_v2(self, req):
+    async def fetch_rpg_battle_history_v2(self, req: pb.ReqFetchRPGBattleHistory) -> pb.ResFetchRPGBattleHistoryV2:
         return await self.call_method('fetchRPGBattleHistoryV2', req)
 
-    async def receive_rpg_rewards(self, req):
+    async def receive_rpg_rewards(self, req: pb.ReqReceiveRPGRewards) -> pb.ResReceiveRPGRewards:
         return await self.call_method('receiveRPGRewards', req)
 
-    async def receive_rpg_reward(self, req):
+    async def receive_rpg_reward(self, req: pb.ReqReceiveRPGReward) -> pb.ResReceiveRPGRewards:
         return await self.call_method('receiveRPGReward', req)
 
-    async def buy_arena_ticket(self, req):
+    async def buy_arena_ticket(self, req: pb.ReqBuyArenaTicket) -> pb.ResCommon:
         return await self.call_method('buyArenaTicket', req)
 
-    async def enter_arena(self, req):
+    async def enter_arena(self, req: pb.ReqEnterArena) -> pb.ResCommon:
         return await self.call_method('enterArena', req)
 
-    async def receive_arena_reward(self, req):
+    async def receive_arena_reward(self, req: pb.ReqArenaReward) -> pb.ResArenaReward:
         return await self.call_method('receiveArenaReward', req)
 
-    async def fetch_ob_token(self, req):
+    async def fetch_ob_token(self, req: pb.ReqFetchOBToken) -> pb.ResFetchOBToken:
         return await self.call_method('fetchOBToken', req)
 
-    async def receive_character_rewards(self, req):
+    async def receive_character_rewards(self, req: pb.ReqReceiveCharacterRewards) -> pb.ResReceiveCharacterRewards:
         return await self.call_method('receiveCharacterRewards', req)
 
-    async def feed_activity_feed(self, req):
+    async def feed_activity_feed(self, req: pb.ReqFeedActivityFeed) -> pb.ResFeedActivityFeed:
         return await self.call_method('feedActivityFeed', req)
 
-    async def send_activity_gift_to_friend(self, req):
+    async def send_activity_gift_to_friend(self, req: pb.ReqSendActivityGiftToFriend) -> pb.ResSendActivityGiftToFriend:
         return await self.call_method('sendActivityGiftToFriend', req)
 
-    async def receive_activity_gift(self, req):
+    async def receive_activity_gift(self, req: pb.ReqReceiveActivityGift) -> pb.ResCommon:
         return await self.call_method('receiveActivityGift', req)
 
-    async def receive_all_activity_gift(self, req):
+    async def receive_all_activity_gift(self, req: pb.ReqReceiveAllActivityGift) -> pb.ResReceiveAllActivityGift:
         return await self.call_method('receiveAllActivityGift', req)
 
-    async def fetch_friend_gift_activity_data(self, req):
+    async def fetch_friend_gift_activity_data(self, req: pb.ReqFetchFriendGiftActivityData) -> pb.ResFetchFriendGiftActivityData:
         return await self.call_method('fetchFriendGiftActivityData', req)
 
-    async def open_pre_chest_item(self, req):
+    async def open_pre_chest_item(self, req: pb.ReqOpenPreChestItem) -> pb.ResOpenPreChestItem:
         return await self.call_method('openPreChestItem', req)
 
-    async def fetch_vote_activity(self, req):
+    async def fetch_vote_activity(self, req: pb.ReqFetchVoteActivity) -> pb.ResFetchVoteActivity:
         return await self.call_method('fetchVoteActivity', req)
 
-    async def vote_activity(self, req):
+    async def vote_activity(self, req: pb.ReqVoteActivity) -> pb.ResVoteActivity:
         return await self.call_method('voteActivity', req)
 
-    async def unlock_activity_spot(self, req):
+    async def unlock_activity_spot(self, req: pb.ReqUnlockActivitySpot) -> pb.ResCommon:
         return await self.call_method('unlockActivitySpot', req)
 
-    async def unlock_activity_spot_ending(self, req):
+    async def unlock_activity_spot_ending(self, req: pb.ReqUnlockActivitySpotEnding) -> pb.ResCommon:
         return await self.call_method('unlockActivitySpotEnding', req)
 
-    async def receive_activity_spot_reward(self, req):
+    async def receive_activity_spot_reward(self, req: pb.ReqReceiveActivitySpotReward) -> pb.ResReceiveActivitySpotReward:
         return await self.call_method('receiveActivitySpotReward', req)
 
-    async def delete_account(self, req):
+    async def delete_account(self, req: pb.ReqCommon) -> pb.ResDeleteAccount:
         return await self.call_method('deleteAccount', req)
 
-    async def cancel_delete_account(self, req):
+    async def cancel_delete_account(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('cancelDeleteAccount', req)
 
-    async def log_report(self, req):
+    async def log_report(self, req: pb.ReqLogReport) -> pb.ResCommon:
         return await self.call_method('logReport', req)
 
-    async def bind_oauth2(self, req):
+    async def bind_oauth2(self, req: pb.ReqBindOauth2) -> pb.ResCommon:
         return await self.call_method('bindOauth2', req)
 
-    async def fetch_oauth2_info(self, req):
+    async def fetch_oauth2_info(self, req: pb.ReqFetchOauth2) -> pb.ResFetchOauth2:
         return await self.call_method('fetchOauth2Info', req)
 
-    async def set_loading_image(self, req):
+    async def set_loading_image(self, req: pb.ReqSetLoadingImage) -> pb.ResCommon:
         return await self.call_method('setLoadingImage', req)
 
-    async def fetch_shop_interval(self, req):
+    async def fetch_shop_interval(self, req: pb.ReqCommon) -> pb.ResFetchShopInterval:
         return await self.call_method('fetchShopInterval', req)
 
-    async def fetch_activity_interval(self, req):
+    async def fetch_activity_interval(self, req: pb.ReqCommon) -> pb.ResFetchActivityInterval:
         return await self.call_method('fetchActivityInterval', req)
 
-    async def fetch_recent_friend(self, req):
+    async def fetch_recent_friend(self, req: pb.ReqCommon) -> pb.ResFetchrecentFriend:
         return await self.call_method('fetchRecentFriend', req)
 
-    async def open_gacha(self, req):
+    async def open_gacha(self, req: pb.ReqOpenGacha) -> pb.ResOpenGacha:
         return await self.call_method('openGacha', req)
 
-    async def task_request(self, req):
+    async def task_request(self, req: pb.ReqTaskRequest) -> pb.ResCommon:
         return await self.call_method('taskRequest', req)
 
-    async def simulation_activity_train(self, req):
+    async def simulation_activity_train(self, req: pb.ReqSimulationActivityTrain) -> pb.ResSimulationActivityTrain:
         return await self.call_method('simulationActivityTrain', req)
 
-    async def fetch_simulation_game_record(self, req):
+    async def fetch_simulation_game_record(self, req: pb.ReqFetchSimulationGameRecord) -> pb.ResFetchSimulationGameRecord:
         return await self.call_method('fetchSimulationGameRecord', req)
 
-    async def start_simulation_activity_game(self, req):
+    async def start_simulation_activity_game(self, req: pb.ReqStartSimulationActivityGame) -> pb.ResStartSimulationActivityGame:
         return await self.call_method('startSimulationActivityGame', req)
 
-    async def fetch_simulation_game_rank(self, req):
+    async def fetch_simulation_game_rank(self, req: pb.ReqFetchSimulationGameRank) -> pb.ResFetchSimulationGameRank:
         return await self.call_method('fetchSimulationGameRank', req)
 
-    async def generate_combining_craft(self, req):
+    async def generate_combining_craft(self, req: pb.ReqGenerateCombiningCraft) -> pb.ResGenerateCombiningCraft:
         return await self.call_method('generateCombiningCraft', req)
 
-    async def move_combining_craft(self, req):
+    async def move_combining_craft(self, req: pb.ReqMoveCombiningCraft) -> pb.ResMoveCombiningCraft:
         return await self.call_method('moveCombiningCraft', req)
 
-    async def combining_recycle_craft(self, req):
+    async def combining_recycle_craft(self, req: pb.ReqCombiningRecycleCraft) -> pb.ResCombiningRecycleCraft:
         return await self.call_method('combiningRecycleCraft', req)
 
-    async def recover_combining_recycle(self, req):
+    async def recover_combining_recycle(self, req: pb.ReqRecoverCombiningRecycle) -> pb.ResRecoverCombiningRecycle:
         return await self.call_method('recoverCombiningRecycle', req)
 
-    async def finish_combining_order(self, req):
+    async def finish_combining_order(self, req: pb.ReqFinishCombiningOrder) -> pb.ResFinishCombiningOrder:
         return await self.call_method('finishCombiningOrder', req)
 
-    async def upgrade_village_building(self, req):
+    async def upgrade_village_building(self, req: pb.ReqUpgradeVillageBuilding) -> pb.ResCommon:
         return await self.call_method('upgradeVillageBuilding', req)
 
-    async def receive_village_building_reward(self, req):
+    async def receive_village_building_reward(self, req: pb.ReqReceiveVillageBuildingReward) -> pb.ResReceiveVillageBuildingReward:
         return await self.call_method('receiveVillageBuildingReward', req)
 
-    async def start_village_trip(self, req):
+    async def start_village_trip(self, req: pb.ReqStartVillageTrip) -> pb.ResCommon:
         return await self.call_method('startVillageTrip', req)
 
-    async def receive_village_trip_reward(self, req):
+    async def receive_village_trip_reward(self, req: pb.ReqReceiveVillageTripReward) -> pb.ResReceiveVillageTripReward:
         return await self.call_method('receiveVillageTripReward', req)
 
-    async def complete_village_task(self, req):
+    async def complete_village_task(self, req: pb.ReqCompleteVillageTask) -> pb.ResCompleteVillageTask:
         return await self.call_method('completeVillageTask', req)
 
-    async def get_friend_village_data(self, req):
+    async def get_friend_village_data(self, req: pb.ReqGetFriendVillageData) -> pb.ResGetFriendVillageData:
         return await self.call_method('getFriendVillageData', req)
 
-    async def set_village_worker(self, req):
+    async def set_village_worker(self, req: pb.ReqSetVillageWorker) -> pb.ResSetVillageWorker:
         return await self.call_method('setVillageWorker', req)
 
-    async def next_round_village(self, req):
+    async def next_round_village(self, req: pb.ReqNextRoundVillage) -> pb.ResNextRoundVillage:
         return await self.call_method('nextRoundVillage', req)
 
-    async def shoot_activity_attack_enemies(self, req):
+    async def shoot_activity_attack_enemies(self, req: pb.ReqShootActivityAttackEnemies) -> pb.ResShootActivityAttackEnemies:
         return await self.call_method('shootActivityAttackEnemies', req)
 
-    async def resolve_festival_activity_proposal(self, req):
+    async def resolve_festival_activity_proposal(self, req: pb.ReqResolveFestivalActivityProposal) -> pb.ResResolveFestivalActivityProposal:
         return await self.call_method('resolveFestivalActivityProposal', req)
 
-    async def resolve_festival_activity_event(self, req):
+    async def resolve_festival_activity_event(self, req: pb.ReqResolveFestivalActivityEvent) -> pb.ResResolveFestivalActivityEvent:
         return await self.call_method('resolveFestivalActivityEvent', req)
 
-    async def buy_festival_proposal(self, req):
+    async def buy_festival_proposal(self, req: pb.ReqBuyFestivalProposal) -> pb.ResBuyFestivalProposal:
         return await self.call_method('buyFestivalProposal', req)
 
-    async def island_activity_move(self, req):
+    async def island_activity_move(self, req: pb.ReqIslandActivityMove) -> pb.ResCommon:
         return await self.call_method('islandActivityMove', req)
 
-    async def island_activity_buy(self, req):
+    async def island_activity_buy(self, req: pb.ReqIslandActivityBuy) -> pb.ResCommon:
         return await self.call_method('islandActivityBuy', req)
 
-    async def island_activity_sell(self, req):
+    async def island_activity_sell(self, req: pb.ReqIslandActivitySell) -> pb.ResCommon:
         return await self.call_method('islandActivitySell', req)
 
-    async def island_activity_tidy_bag(self, req):
+    async def island_activity_tidy_bag(self, req: pb.ReqIslandActivityTidyBag) -> pb.ResCommon:
         return await self.call_method('islandActivityTidyBag', req)
 
-    async def island_activity_unlock_bag_grid(self, req):
+    async def island_activity_unlock_bag_grid(self, req: pb.ReqIslandActivityUnlockBagGrid) -> pb.ResCommon:
         return await self.call_method('islandActivityUnlockBagGrid', req)
 
-    async def create_customized_contest(self, req):
+    async def create_customized_contest(self, req: pb.ReqCreateCustomizedContest) -> pb.ResCreateCustomizedContest:
         return await self.call_method('createCustomizedContest', req)
 
-    async def fetch_manager_customized_contest_list(self, req):
+    async def fetch_manager_customized_contest_list(self, req: pb.ReqFetchmanagerCustomizedContestList) -> pb.ResFetchManagerCustomizedContestList:
         return await self.call_method('fetchManagerCustomizedContestList', req)
 
-    async def fetch_manager_customized_contest(self, req):
+    async def fetch_manager_customized_contest(self, req: pb.ReqFetchManagerCustomizedContest) -> pb.ResFetchManagerCustomizedContest:
         return await self.call_method('fetchManagerCustomizedContest', req)
 
-    async def update_manager_customized_contest(self, req):
+    async def update_manager_customized_contest(self, req: pb.ReqUpdateManagerCustomizedContest) -> pb.ResCommon:
         return await self.call_method('updateManagerCustomizedContest', req)
 
-    async def fetch_ready_player_list(self, req):
+    async def fetch_ready_player_list(self, req: pb.ReqFetchReadyPlayerList) -> pb.ResFetchReadyPlayerList:
         return await self.call_method('fetchReadyPlayerList', req)
 
-    async def create_game_plan(self, req):
+    async def create_game_plan(self, req: pb.ReqCreateGamePlan) -> pb.ResCommon:
         return await self.call_method('createGamePlan', req)
 
-    async def generate_contest_manager_login_code(self, req):
+    async def generate_contest_manager_login_code(self, req: pb.ReqCommon) -> pb.ResGenerateContestManagerLoginCode:
         return await self.call_method('generateContestManagerLoginCode', req)
 
-    async def fetch_amulet_activity_data(self, req):
+    async def fetch_amulet_activity_data(self, req: pb.ReqFetchAmuletActivityData) -> pb.ResFetchAmuletActivityData:
         return await self.call_method('fetchAmuletActivityData', req)
 
-    async def amulet_activity_fetch_brief(self, req):
+    async def amulet_activity_fetch_brief(self, req: pb.ReqAmuletActivityFetchBrief) -> pb.ResAmuletActivityFetchBrief:
         return await self.call_method('amuletActivityFetchBrief', req)
 
-    async def amulet_activity_start_game(self, req):
+    async def amulet_activity_start_game(self, req: pb.ReqAmuletActivityStartGame) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityStartGame', req)
 
-    async def amulet_activity_operate(self, req):
+    async def amulet_activity_operate(self, req: pb.ReqAmuletActivityOperate) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityOperate', req)
 
-    async def amulet_activity_upgrade(self, req):
+    async def amulet_activity_upgrade(self, req: pb.ReqAmuletActivityUpgrade) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityUpgrade', req)
 
-    async def amulet_activity_buy(self, req):
+    async def amulet_activity_buy(self, req: pb.ReqAmuletActivityBuy) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityBuy', req)
 
-    async def amulet_activity_select_pack(self, req):
+    async def amulet_activity_select_pack(self, req: pb.ReqAmuletActivitySelectPack) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivitySelectPack', req)
 
-    async def amulet_activity_sell_effect(self, req):
+    async def amulet_activity_sell_effect(self, req: pb.ReqAmuletActivitySellEffect) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivitySellEffect', req)
 
-    async def amulet_activity_effect_sort(self, req):
+    async def amulet_activity_effect_sort(self, req: pb.ReqAmuletActivityEffectSort) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityEffectSort', req)
 
-    async def amulet_activity_giveup(self, req):
+    async def amulet_activity_giveup(self, req: pb.ReqAmuletActivityGiveup) -> pb.ResCommon:
         return await self.call_method('amuletActivityGiveup', req)
 
-    async def amulet_activity_refresh_shop(self, req):
+    async def amulet_activity_refresh_shop(self, req: pb.ReqAmuletActivityRefreshShop) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityRefreshShop', req)
 
-    async def amulet_activity_select_free_effect(self, req):
+    async def amulet_activity_select_free_effect(self, req: pb.ReqAmuletActivitySelectFreeEffect) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivitySelectFreeEffect', req)
 
-    async def amulet_activity_upgrade_shop_buff(self, req):
+    async def amulet_activity_upgrade_shop_buff(self, req: pb.ReqAmuletActivityUpgradeShopBuff) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityUpgradeShopBuff', req)
 
-    async def amulet_activity_end_shopping(self, req):
+    async def amulet_activity_end_shopping(self, req: pb.ReqAmuletActivityEndShopping) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivityEndShopping', req)
 
-    async def amulet_activity_set_skill_level(self, req):
+    async def amulet_activity_set_skill_level(self, req: pb.ReqAmuletActivitySetSkillLevel) -> pb.ResCommon:
         return await self.call_method('amuletActivitySetSkillLevel', req)
 
-    async def amulet_activity_maintain_info(self, req):
+    async def amulet_activity_maintain_info(self, req: pb.ReqCommon) -> pb.ResAmuletActivityMaintainInfo:
         return await self.call_method('amuletActivityMaintainInfo', req)
 
-    async def amulet_activity_select_reward_pack(self, req):
+    async def amulet_activity_select_reward_pack(self, req: pb.ReqAmuletActivitySelectRewardPack) -> pb.ResAmuletEventResponse:
         return await self.call_method('amuletActivitySelectRewardPack', req)
 
-    async def amulet_activity_select_book_effect(self, req):
+    async def amulet_activity_select_book_effect(self, req: pb.ReqAmuletActivitySelectBookEffect) -> pb.ResCommon:
         return await self.call_method('amuletActivitySelectBookEffect', req)
 
-    async def story_activity_unlock(self, req):
+    async def story_activity_unlock(self, req: pb.ReqStoryActivityUnlock) -> pb.ResCommon:
         return await self.call_method('storyActivityUnlock', req)
 
-    async def story_activity_unlock_ending(self, req):
+    async def story_activity_unlock_ending(self, req: pb.ReqStoryActivityUnlockEnding) -> pb.ResCommon:
         return await self.call_method('storyActivityUnlockEnding', req)
 
-    async def story_activity_receive_ending_reward(self, req):
+    async def story_activity_receive_ending_reward(self, req: pb.ReqStoryActivityReceiveEndingReward) -> pb.ResStoryReward:
         return await self.call_method('storyActivityReceiveEndingReward', req)
 
-    async def story_activity_receive_finish_reward(self, req):
+    async def story_activity_receive_finish_reward(self, req: pb.ReqStoryActivityReceiveFinishReward) -> pb.ResStoryReward:
         return await self.call_method('storyActivityReceiveFinishReward', req)
 
-    async def story_activity_receive_all_finish_reward(self, req):
+    async def story_activity_receive_all_finish_reward(self, req: pb.ReqStoryActivityReceiveAllFinishReward) -> pb.ResStoryReward:
         return await self.call_method('storyActivityReceiveAllFinishReward', req)
 
-    async def story_activity_unlock_ending_and_receive(self, req):
+    async def story_activity_unlock_ending_and_receive(self, req: pb.ReqStoryActivityUnlockEndingAndReceive) -> pb.ResStoryActivityUnlockEndingAndReceive:
         return await self.call_method('storyActivityUnlockEndingAndReceive', req)
 
-    async def fetch_activity_rank(self, req):
+    async def fetch_activity_rank(self, req: pb.ReqFetchActivityRank) -> pb.ResFetchActivityRank:
         return await self.call_method('fetchActivityRank', req)
 
-    async def set_verified_hidden(self, req):
+    async def set_verified_hidden(self, req: pb.ReqSetVerifiedHidden) -> pb.ResCommon:
         return await self.call_method('setVerifiedHidden', req)
 
-    async def fetch_questionnaire_list(self, req):
+    async def fetch_questionnaire_list(self, req: pb.ReqFetchQuestionnaireList) -> pb.ResFetchQuestionnaireList:
         return await self.call_method('fetchQuestionnaireList', req)
 
-    async def fetch_questionnaire_detail(self, req):
+    async def fetch_questionnaire_detail(self, req: pb.ReqFetchQuestionnaireDetail) -> pb.ResFetchQuestionnaireDetail:
         return await self.call_method('fetchQuestionnaireDetail', req)
 
-    async def submit_questionnaire(self, req):
+    async def submit_questionnaire(self, req: pb.ReqSubmitQuestionnaire) -> pb.ResCommon:
         return await self.call_method('submitQuestionnaire', req)
 
-    async def set_friend_room_random_bot_char(self, req):
+    async def set_friend_room_random_bot_char(self, req: pb.ReqSetFriendRoomRandomBotChar) -> pb.ResCommon:
         return await self.call_method('setFriendRoomRandomBotChar', req)
 
-    async def fetch_account_game_hu_records(self, req):
+    async def fetch_account_game_hu_records(self, req: pb.ReqFetchAccountGameHuRecords) -> pb.ResFetchAccountGameHuRecords:
         return await self.call_method('fetchAccountGameHuRecords', req)
 
-    async def fetch_account_info_extra(self, req):
+    async def fetch_account_info_extra(self, req: pb.ReqFetchAccountInfoExtra) -> pb.ResFetchAccountInfoExtra:
         return await self.call_method('fetchAccountInfoExtra', req)
 
-    async def set_account_favorite_hu(self, req):
+    async def set_account_favorite_hu(self, req: pb.ReqSetAccountFavoriteHu) -> pb.ResCommon:
         return await self.call_method('setAccountFavoriteHu', req)
 
-    async def fetch_seer_report(self, req):
+    async def fetch_seer_report(self, req: pb.ReqFetchSeerReport) -> pb.ResFetchSeerReport:
         return await self.call_method('fetchSeerReport', req)
 
-    async def create_seer_report(self, req):
+    async def create_seer_report(self, req: pb.ReqCreateSeerReport) -> pb.ResCreateSeerReport:
         return await self.call_method('createSeerReport', req)
 
-    async def fetch_seer_report_list(self, req):
+    async def fetch_seer_report_list(self, req: pb.ReqCommon) -> pb.ResFetchSeerReportList:
         return await self.call_method('fetchSeerReportList', req)
 
-    async def fetch_seer_info(self, req):
+    async def fetch_seer_info(self, req: pb.ReqCommon) -> pb.ResFetchSeerInfo:
         return await self.call_method('fetchSeerInfo', req)
 
-    async def select_chest_choose_up_activity(self, req):
+    async def select_chest_choose_up_activity(self, req: pb.ReqSelectChestChooseUp) -> pb.ReqCommon:
         return await self.call_method('selectChestChooseUpActivity', req)
 
-    async def generate_annual_report_token(self, req):
+    async def generate_annual_report_token(self, req: pb.ReqGenerateAnnualReportToken) -> pb.ResGenerateAnnualReportToken:
         return await self.call_method('generateAnnualReportToken', req)
 
-    async def fetch_annual_report_info(self, req):
+    async def fetch_annual_report_info(self, req: pb.ReqCommon) -> pb.ResFetchAnnualReportInfo:
         return await self.call_method('fetchAnnualReportInfo', req)
 
-    async def remark_friend(self, req):
+    async def remark_friend(self, req: pb.ReqRemarkFriend) -> pb.ResCommon:
         return await self.call_method('remarkFriend', req)
 
-    async def sim_v2_activity_fetch_info(self, req):
+    async def sim_v2_activity_fetch_info(self, req: pb.ReqSimV2ActivityFetchInfo) -> pb.ResSimV2ActivityFetchInfo:
         return await self.call_method('simV2ActivityFetchInfo', req)
 
-    async def sim_v2_activity_start_season(self, req):
+    async def sim_v2_activity_start_season(self, req: pb.ReqSimV2ActivityStartSeason) -> pb.ResSimV2ActivityStartSeason:
         return await self.call_method('simV2ActivityStartSeason', req)
 
-    async def sim_v2_activity_train(self, req):
+    async def sim_v2_activity_train(self, req: pb.ReqSimV2ActivityTrain) -> pb.ResSimV2ActivityTrain:
         return await self.call_method('simV2ActivityTrain', req)
 
-    async def sim_v2_activity_select_event(self, req):
+    async def sim_v2_activity_select_event(self, req: pb.ReqSimV2ActivitySelectEvent) -> pb.ResSimV2ActivitySelectEvent:
         return await self.call_method('simV2ActivitySelectEvent', req)
 
-    async def sim_v2_activity_start_match(self, req):
+    async def sim_v2_activity_start_match(self, req: pb.ReqSimV2ActivityStartMatch) -> pb.ResSimV2ActivityStartMatch:
         return await self.call_method('simV2ActivityStartMatch', req)
 
-    async def sim_v2_activity_end_match(self, req):
+    async def sim_v2_activity_end_match(self, req: pb.ReqSimV2ActivityEndMatch) -> pb.ResSimV2ActivityEndMatch:
         return await self.call_method('simV2ActivityEndMatch', req)
 
-    async def sim_v2_activity_give_up(self, req):
+    async def sim_v2_activity_give_up(self, req: pb.ReqSimV2ActivityGiveUp) -> pb.ResCommon:
         return await self.call_method('simV2ActivityGiveUp', req)
 
-    async def sim_v2_activity_set_upgrade(self, req):
+    async def sim_v2_activity_set_upgrade(self, req: pb.ReqSimV2ActivitySetUpgrade) -> pb.ResCommon:
         return await self.call_method('simV2ActivitySetUpgrade', req)
 
-    async def progress_reward_activity_receive(self, req):
+    async def progress_reward_activity_receive(self, req: pb.ReqProgressRewardActivityReceive) -> pb.ResProgressRewardActivityReceive:
         return await self.call_method('progressRewardActivityReceive', req)
 
-    async def fetch_progress_reward_activity_info(self, req):
+    async def fetch_progress_reward_activity_info(self, req: pb.ReqFetchProgressRewardActivityInfo) -> pb.ResFetchProgressRewardActivityInfo:
         return await self.call_method('fetchProgressRewardActivityInfo', req)
 
-    async def quest_crew_activity_start_quest(self, req):
+    async def quest_crew_activity_start_quest(self, req: pb.ReqQuestCrewActivityStartQuest) -> pb.ResQuestCrewActivityStartQuest:
         return await self.call_method('questCrewActivityStartQuest', req)
 
-    async def quest_crew_activity_hire(self, req):
+    async def quest_crew_activity_hire(self, req: pb.ReqQuestCrewActivityHire) -> pb.ResQuestCrewActivityHire:
         return await self.call_method('questCrewActivityHire', req)
 
-    async def quest_crew_activity_feed(self, req):
+    async def quest_crew_activity_feed(self, req: pb.ReqQuestCrewActivityFeed) -> pb.ResQuestCrewActivityFeed:
         return await self.call_method('questCrewActivityFeed', req)
 
-    async def quest_crew_activity_refresh_market(self, req):
+    async def quest_crew_activity_refresh_market(self, req: pb.ReqQuestCrewActivityRefreshMarket) -> pb.ResQuestCrewActivityRefreshMarket:
         return await self.call_method('questCrewActivityRefreshMarket', req)
 
-    async def bingo_activity_receive_reward(self, req):
+    async def bingo_activity_receive_reward(self, req: pb.ReqBingoActivityReceiveReward) -> pb.ResBingoActivityReceiveReward:
         return await self.call_method('bingoActivityReceiveReward', req)
 
-    async def fetch_bingo_activity_data(self, req):
+    async def fetch_bingo_activity_data(self, req: pb.ReqFetchBingoActivityData) -> pb.ResFetchBingoActivityData:
         return await self.call_method('fetchBingoActivityData', req)
 
-    async def snowball_activity_start_battle(self, req):
+    async def snowball_activity_start_battle(self, req: pb.ReqSnowballActivityStartBattle) -> pb.ResSnowballActivityStartBattle:
         return await self.call_method('snowballActivityStartBattle', req)
 
-    async def snowball_activity_finish_battle(self, req):
+    async def snowball_activity_finish_battle(self, req: pb.ReqSnowballActivityFinishBattle) -> pb.ResSnowballActivityFinishBattle:
         return await self.call_method('snowballActivityFinishBattle', req)
 
-    async def snowball_activity_upgrade(self, req):
+    async def snowball_activity_upgrade(self, req: pb.ReqSnowballActivityUpgrade) -> pb.ResSnowballActivityUpgrade:
         return await self.call_method('snowballActivityUpgrade', req)
 
-    async def snowball_activity_receive_reward(self, req):
+    async def snowball_activity_receive_reward(self, req: pb.ReqSnowballActivityReceiveReward) -> pb.ResSnowballActivityReceiveReward:
         return await self.call_method('snowballActivityReceiveReward', req)
 
 
@@ -2085,55 +2085,55 @@ class FastTest(MSRPCService):
     def get_res_class(self, method):
         return FastTest._res[method]
 
-    async def auth_game(self, req):
+    async def auth_game(self, req: pb.ReqAuthGame) -> pb.ResAuthGame:
         return await self.call_method('authGame', req)
 
-    async def enter_game(self, req):
+    async def enter_game(self, req: pb.ReqCommon) -> pb.ResEnterGame:
         return await self.call_method('enterGame', req)
 
-    async def sync_game(self, req):
+    async def sync_game(self, req: pb.ReqSyncGame) -> pb.ResSyncGame:
         return await self.call_method('syncGame', req)
 
-    async def finish_sync_game(self, req):
+    async def finish_sync_game(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('finishSyncGame', req)
 
-    async def terminate_game(self, req):
+    async def terminate_game(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('terminateGame', req)
 
-    async def input_operation(self, req):
+    async def input_operation(self, req: pb.ReqSelfOperation) -> pb.ResCommon:
         return await self.call_method('inputOperation', req)
 
-    async def input_chi_peng_gang(self, req):
+    async def input_chi_peng_gang(self, req: pb.ReqChiPengGang) -> pb.ResCommon:
         return await self.call_method('inputChiPengGang', req)
 
-    async def confirm_new_round(self, req):
+    async def confirm_new_round(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('confirmNewRound', req)
 
-    async def broadcast_in_game(self, req):
+    async def broadcast_in_game(self, req: pb.ReqBroadcastInGame) -> pb.ResCommon:
         return await self.call_method('broadcastInGame', req)
 
-    async def input_game_gm_command(self, req):
+    async def input_game_gm_command(self, req: pb.ReqGMCommandInGaming) -> pb.ResCommon:
         return await self.call_method('inputGameGMCommand', req)
 
-    async def fetch_game_player_state(self, req):
+    async def fetch_game_player_state(self, req: pb.ReqCommon) -> pb.ResGamePlayerState:
         return await self.call_method('fetchGamePlayerState', req)
 
-    async def check_network_delay(self, req):
+    async def check_network_delay(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('checkNetworkDelay', req)
 
-    async def clear_leaving(self, req):
+    async def clear_leaving(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('clearLeaving', req)
 
-    async def vote_game_end(self, req):
+    async def vote_game_end(self, req: pb.ReqVoteGameEnd) -> pb.ResGameEndVote:
         return await self.call_method('voteGameEnd', req)
 
-    async def auth_observe(self, req):
+    async def auth_observe(self, req: pb.ReqAuthObserve) -> pb.ResCommon:
         return await self.call_method('authObserve', req)
 
-    async def start_observe(self, req):
+    async def start_observe(self, req: pb.ReqCommon) -> pb.ResStartObserve:
         return await self.call_method('startObserve', req)
 
-    async def stop_observe(self, req):
+    async def stop_observe(self, req: pb.ReqCommon) -> pb.ResCommon:
         return await self.call_method('stopObserve', req)
 
 
@@ -2163,11 +2163,11 @@ class Route(MSRPCService):
     def get_res_class(self, method):
         return Route._res[method]
 
-    async def request_connection(self, req):
+    async def request_connection(self, req: pb.ReqRequestConnection) -> pb.ResRequestConnection:
         return await self.call_method('requestConnection', req)
 
-    async def request_route_change(self, req):
+    async def request_route_change(self, req: pb.ReqRequestRouteChange) -> pb.ResRequestRouteChange:
         return await self.call_method('requestRouteChange', req)
 
-    async def heartbeat(self, req):
+    async def heartbeat(self, req: pb.ReqHeartbeat) -> pb.ResHeartbeat:
         return await self.call_method('heartbeat', req)

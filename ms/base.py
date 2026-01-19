@@ -1,22 +1,24 @@
 import asyncio
 import websockets
+from typing import Coroutine, Callable
 
 from ms.protocol_pb2 import Wrapper
 
 
 class MSRPCChannel:
-
     def __init__(self, endpoint):
         self._endpoint = endpoint
         self._req_events = {}
         self._new_req_idx = 1
         self._res = {}
-        self._hooks = {}
+        self._hooks: dict[
+            str, list[Callable[[bytes], Coroutine[None, None, None]]]
+        ] = {}
 
-        self._ws = None
-        self._msg_dispatcher = None
+        self._ws: websockets.ClientConnection
+        self._msg_dispatcher: asyncio.Task
 
-    def add_hook(self, msg_type, hook):
+    def add_hook(self, msg_type: str, hook: Callable[[bytes], Coroutine]):
         if msg_type not in self._hooks:
             self._hooks[msg_type] = []
         self._hooks[msg_type].append(hook)
@@ -58,18 +60,18 @@ class MSRPCChannel:
                 for hook in self._hooks.get(wrapper.name, []):
                     asyncio.create_task(hook(wrapper.data))
             elif type_byte == 3:  # RESPONSE
-                idx = int.from_bytes(msg[1:3], 'little')
-                if not idx in self._req_events:
+                idx = int.from_bytes(msg[1:3], "little")  # pyright: ignore[reportArgumentType]
+                if idx not in self._req_events:
                     continue
                 self._res[idx] = msg
                 self._req_events[idx].set()
 
-    async def send_request(self, name, msg):
+    async def send_request(self, name, msg) -> bytes | None:
         idx = self._new_req_idx
         self._new_req_idx = (self._new_req_idx + 1) % 60007
 
         wrapped = self.wrap(name, msg)
-        pkt = b'\x02' + idx.to_bytes(2, 'little') + wrapped
+        pkt = b"\x02" + idx.to_bytes(2, "little") + wrapped
 
         evt = asyncio.Event()
         self._req_events[idx] = evt
@@ -77,7 +79,7 @@ class MSRPCChannel:
         await self._ws.send(pkt)
         await evt.wait()
 
-        if not idx in self._res:
+        if idx not in self._res:
             return None
         res = self._res[idx]
         del self._res[idx]
@@ -91,9 +93,8 @@ class MSRPCChannel:
 
 
 class MSRPCService:
-
-    def __init__(self, channel):
-        self._channel = channel
+    def __init__(self, channel: MSRPCChannel):
+        self._channel: MSRPCChannel = channel
 
     def get_package_name(self):
         raise NotImplementedError
@@ -109,7 +110,9 @@ class MSRPCService:
 
     async def call_method(self, method, req):
         msg = req.SerializeToString()
-        name = '.{}.{}.{}'.format(self.get_package_name(), self.get_service_name(), method)
+        name = ".{}.{}.{}".format(
+            self.get_package_name(), self.get_service_name(), method
+        )
         res_msg = await self._channel.send_request(name, msg)
         res_class = self.get_res_class(method)
         res = res_class()

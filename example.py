@@ -2,7 +2,6 @@ import asyncio
 import hashlib
 import hmac
 import logging
-import random
 import uuid
 from optparse import OptionParser
 
@@ -46,6 +45,8 @@ async def main():
     if not log_uuid:
         game_logs = await load_game_logs(lobby)
         logging.info("Found {} records".format(len(game_logs)))
+        for log in game_logs:
+            logging.info(f"Log id: {log}")
     else:
         game_log = await load_and_process_game_log(lobby, log_uuid, version_to_force)
         logging.info(
@@ -55,7 +56,7 @@ async def main():
     await channel.close()
 
 
-async def connect():
+async def connect() -> tuple[Lobby, MSRPCChannel, str]:
     async with aiohttp.ClientSession() as session:
         async with session.get("{}/1/version.json".format(MS_HOST)) as res:
             version = await res.json()
@@ -81,7 +82,7 @@ async def connect():
     return lobby, channel, version_to_force
 
 
-async def login(lobby, username, password, version_to_force):
+async def login(lobby: Lobby, username: str, password: str, version_to_force: str):
     logging.info("Login with username and password")
 
     uuid_key = str(uuid.uuid1())
@@ -105,7 +106,7 @@ async def login(lobby, username, password, version_to_force):
     return True
 
 
-async def load_game_logs(lobby):
+async def load_game_logs(lobby: Lobby) -> list[str]:
     logging.info("Loading game logs")
 
     records = []
@@ -134,43 +135,31 @@ async def load_and_process_game_log(lobby, uuid, version_to_force):
     game_details = pb.GameDetailRecords()
     game_details.ParseFromString(record_wrapper.data)
 
-    game_records_count = len(game_details.records)
-    logging.info("Found {} game records".format(game_records_count))
+    game_records_count = len(game_details.actions)
+    logging.info("Found {} game actions".format(game_records_count))
 
     round_record_wrapper = pb.Wrapper()
-    is_show_new_round_record = False
-    is_show_discard_tile = False
-    is_show_deal_tile = False
 
     for i in range(0, game_records_count):
-        round_record_wrapper.ParseFromString(game_details.records[i])
+        round_record_wrapper.ParseFromString(game_details.actions[i].result)
 
-        if (
-            round_record_wrapper.name == ".lq.RecordNewRound"
-            and not is_show_new_round_record
-        ):
+        if round_record_wrapper.name == ".lq.RecordNewRound":
             logging.info("Found record type = {}".format(round_record_wrapper.name))
             round_data = pb.RecordNewRound()
             round_data.ParseFromString(round_record_wrapper.data)
             print_data_as_json(round_data, "RecordNewRound")
-            is_show_new_round_record = True
 
-        if (
-            round_record_wrapper.name == ".lq.RecordDiscardTile"
-            and not is_show_discard_tile
-        ):
+        if round_record_wrapper.name == ".lq.RecordDiscardTile":
             logging.info("Found record type = {}".format(round_record_wrapper.name))
             discard_tile = pb.RecordDiscardTile()
             discard_tile.ParseFromString(round_record_wrapper.data)
             print_data_as_json(discard_tile, "RecordDiscardTile")
-            is_show_discard_tile = True
 
-        if round_record_wrapper.name == ".lq.RecordDealTile" and not is_show_deal_tile:
+        if round_record_wrapper.name == ".lq.RecordDealTile":
             logging.info("Found record type = {}".format(round_record_wrapper.name))
             deal_tile = pb.RecordDealTile()
             deal_tile.ParseFromString(round_record_wrapper.data)
             print_data_as_json(deal_tile, "RecordDealTile")
-            is_show_deal_tile = True
 
     return res
 
@@ -181,4 +170,7 @@ def print_data_as_json(data, type):
 
 
 if __name__ == "__main__":
+    file_handler = logging.FileHandler("app.log", encoding="utf-8")
+    file_handler.setLevel(logging.INFO)
+    logging.getLogger().addHandler(file_handler)
     asyncio.run(main())
